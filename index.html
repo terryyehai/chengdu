@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>成都深度旅遊 2025｜9天8夜｜旅途日記</title>
-  <meta name="description" content="2025年成都9天8夜深度旅遊行程，包含九寨溝、黃龍、黃龍溪古鎮、市區美食文化等精彩行程。" />
+  <title>成都深度旅遊 2026｜9天8夜｜旅途日記</title>
+  <meta name="description" content="2026年成都9天8夜深度旅遊行程，國泰航空高雄出發，含九寨溝、黃龍、黃龍溪古鎮、市區美食文化等精彩行程。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
@@ -406,6 +406,100 @@
       line-height: 1.4;
     }
 
+    /* ===== 航班資訊 ===== */
+    .flight-section {
+      padding: 0 16px;
+    }
+
+    .flight-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .flight-card-header {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .flight-card-header.outbound {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    .flight-card-header.inbound {
+      background: linear-gradient(135deg, #3B82F6, #2563EB);
+    }
+
+    .flight-leg {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #F3F4F6;
+    }
+
+    .flight-leg:last-child {
+      border-bottom: none;
+    }
+
+    .flight-leg-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .flight-leg-info {
+      flex: 1;
+    }
+
+    .flight-route {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .flight-detail {
+      font-size: 11px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    .flight-time {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .flight-time-main {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .flight-time-sub {
+      font-size: 10px;
+      color: var(--text-sub);
+    }
+
+    .flight-layover {
+      background: #FFFBEB;
+      border-left: 3px solid #F59E0B;
+      margin: 0 14px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: #92400E;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     /* ===== 高德地圖區塊 ===== */
     .map-section {
       padding: 0 16px;
@@ -524,7 +618,7 @@
     <div class="hero-content">
       <div class="hero-logo">🗺️ 旅途日記</div>
       <h1 class="hero-title">成都深度旅遊</h1>
-      <p class="hero-date">2025 年 5月16日 — 5月24日</p>
+      <p class="hero-date">2026 年 5月16日 — 5月24日</p>
       <div class="hero-badges">
         <span class="badge amber">🕐 9天8夜</span>
         <span class="badge">✈️ 四川 成都</span>
@@ -558,7 +652,7 @@
     </div>
     <div class="stat-item">
       <span class="stat-icon">✈️</span>
-      <span class="stat-value">桃園↔成都</span>
+      <span class="stat-value">高雄↔成都</span>
       <span class="stat-label">航班</span>
     </div>
   </div>
@@ -760,7 +854,7 @@
           <span class="day-date">5月24日（週六）</span>
         </div>
         <div class="day-theme">回家！✈️ 返回溫暖的家 🏠</div>
-        <div class="day-hotel">✈️ 08:10 航班起飛 → 桃園</div>
+        <div class="day-hotel">✈️ 08:10 CX917 成都→香港→高雄</div>
         <div class="attraction-tags">
           <span class="tag">清晨出發</span>
           <span class="tag">天府機場</span>
@@ -821,6 +915,78 @@
         <div class="hotel-name">天府空港悅享飯店</div>
         <div class="hotel-nights">📅 Day 8（5/23，1晚）</div>
         <div class="hotel-desc">天府機場旁，為隔天 08:10 早班機做準備</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 航班資訊 ===== -->
+  <div class="section-header">
+    <div class="section-dot" style="background:#3B82F6;"></div>
+    <h2>✈️ 航班資訊</h2>
+  </div>
+
+  <div class="flight-section">
+    <!-- 去程 -->
+    <div class="flight-card">
+      <div class="flight-card-header outbound">
+        🟢 去程 · 2026/05/16（週五）
+      </div>
+      <div class="flight-leg">
+        <div class="flight-leg-icon">🛫</div>
+        <div class="flight-leg-info">
+          <div class="flight-route">高雄 KHH → 香港 HKG</div>
+          <div class="flight-detail">國泰航空 CX449 · 經濟艙</div>
+        </div>
+        <div class="flight-time">
+          <div class="flight-time-main">07:30</div>
+          <div class="flight-time-sub">→ 09:10</div>
+        </div>
+      </div>
+      <div class="flight-layover">
+        ⏳ 香港國際機場轉機 · 停留 50 分鐘
+      </div>
+      <div class="flight-leg">
+        <div class="flight-leg-icon">✈️</div>
+        <div class="flight-leg-info">
+          <div class="flight-route">香港 HKG → 成都 CTU</div>
+          <div class="flight-detail">國泰航空 CX986 · 經濟艙</div>
+        </div>
+        <div class="flight-time">
+          <div class="flight-time-main">10:00</div>
+          <div class="flight-time-sub">→ 12:40</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 回程 -->
+    <div class="flight-card">
+      <div class="flight-card-header inbound">
+        🔵 回程 · 2026/05/24（週六）
+      </div>
+      <div class="flight-leg">
+        <div class="flight-leg-icon">🛫</div>
+        <div class="flight-leg-info">
+          <div class="flight-route">成都 CTU → 香港 HKG</div>
+          <div class="flight-detail">國泰航空 CX917</div>
+        </div>
+        <div class="flight-time">
+          <div class="flight-time-main">08:10</div>
+          <div class="flight-time-sub">→ 11:10</div>
+        </div>
+      </div>
+      <div class="flight-layover">
+        ⏳ 香港國際機場轉機 · 停留 5 小時 25 分鐘
+      </div>
+      <div class="flight-leg">
+        <div class="flight-leg-icon">🏠</div>
+        <div class="flight-leg-info">
+          <div class="flight-route">香港 HKG → 高雄 KHH</div>
+          <div class="flight-detail">國泰航空 CX458</div>
+        </div>
+        <div class="flight-time">
+          <div class="flight-time-main">16:35</div>
+          <div class="flight-time-sub">→ 18:05 抵達</div>
+        </div>
       </div>
     </div>
   </div>
