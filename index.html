@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>成都深度旅遊 2026｜旅途日記</title>
-  <meta name="description" content="2025年成都5天4夜深度旅遊行程，包含大熊貓、三星堆、峨眉山、樂山大佛等精彩景點。" />
+  <title>成都深度旅遊 2025｜9天8夜｜旅途日記</title>
+  <meta name="description" content="2025年成都9天8夜深度旅遊行程，包含九寨溝、黃龍、黃龍溪古鎮、市區美食文化等精彩行程。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet" />
@@ -16,7 +16,7 @@
       securityJsCode: '6906803561bf037e99aa8ceb1de31bee'
     };
   </script>
-  <!-- 高德地圖 JS API v2.0，載入路線規劃、定位等插件 -->
+  <!-- 高德地圖 JS API v2.0 -->
   <script
     src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.Driving,AMap.Walking,AMap.Geolocation,AMap.InfoWindow,AMap.MarkerCluster"></script>
 
@@ -46,10 +46,8 @@
       background: var(--cream);
       color: var(--text-main);
       max-width: 430px;
-      /* iPhone Pro Max 最大寬度 */
       margin: 0 auto;
       padding-bottom: 90px;
-      /* 底部導覽列高度 */
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -61,13 +59,12 @@
       min-height: 220px;
       /* 真實照片背景：成都錦江安順廊橋黃昏 */
       background: url('https://images.unsplash.com/photo-1600111893479-a4c9e2b3d6d0?w=900&q=80&auto=format') center center / cover no-repeat;
-      /* 萬一照片載入失敗的備用漸層 */
       background-color: #1E3A5F;
       overflow: hidden;
       border-radius: 0 0 32px 32px;
     }
 
-    /* SVG 插圖裝飾層：縮到角落，半透明疊加 */
+    /* SVG 插圖裝飾層：縮到角落 */
     .hero-bg-svg {
       position: absolute;
       bottom: -20px;
@@ -222,6 +219,15 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
+    .day-card.disabled {
+      opacity: 0.65;
+      cursor: default;
+    }
+
+    .day-card.disabled:active {
+      transform: none;
+    }
+
     /* 左側日數色條 */
     .day-accent {
       width: 54px;
@@ -268,7 +274,14 @@
       font-size: 14px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 7px;
+      margin-bottom: 4px;
+    }
+
+    .day-hotel {
+      font-size: 11px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 5px;
     }
 
     .attraction-tags {
@@ -303,7 +316,12 @@
       padding-right: 4px;
     }
 
-    /* 每天的左側色條顏色 */
+    .day-arrow-text {
+      font-size: 11px;
+      color: #9CA3AF;
+    }
+
+    /* 每天的左側色條顏色（9天配色方案） */
     .accent-d1 {
       background: linear-gradient(135deg, #F59E0B, #D97706);
     }
@@ -317,11 +335,75 @@
     }
 
     .accent-d4 {
-      background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+      background: linear-gradient(135deg, #06B6D4, #0891B2);
     }
 
     .accent-d5 {
+      background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    }
+
+    .accent-d6 {
+      background: linear-gradient(135deg, #EC4899, #DB2777);
+    }
+
+    .accent-d7 {
+      background: linear-gradient(135deg, #F97316, #EA580C);
+    }
+
+    .accent-d8 {
+      background: linear-gradient(135deg, #14B8A6, #0D9488);
+    }
+
+    .accent-d9 {
       background: linear-gradient(135deg, #EF4444, #DC2626);
+    }
+
+    /* ===== 住宿總覽 ===== */
+    .hotel-cards {
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hotel-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 4px solid var(--teal);
+    }
+
+    .hotel-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .hotel-info {
+      flex: 1;
+    }
+
+    .hotel-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .hotel-nights {
+      font-size: 11px;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .hotel-desc {
+      font-size: 11px;
+      color: var(--text-sub);
+      line-height: 1.4;
     }
 
     /* ===== 高德地圖區塊 ===== */
@@ -335,24 +417,6 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-    }
-
-    .map-btn {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-      background: var(--amber);
-      color: #fff;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 10px;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .map-btn:active {
-      background: var(--amber-dk);
     }
 
     /* ===== 旅遊提示 ===== */
@@ -401,7 +465,6 @@
       display: flex;
       justify-content: space-around;
       padding: 10px 0 20px;
-      /* 20px for home indicator */
       z-index: 100;
     }
 
@@ -437,87 +500,35 @@
 
 <body>
 
-  <!-- ===== 英雄橫幅（文化插圖背景） ===== -->
+  <!-- ===== 英雄橫幅（真實照片背景 + 文化插圖裝飾） ===== -->
   <div class="hero">
-    <!-- SVG 插圖背景：大熊貓 + 竹子 + 川劇面具 + 三星堆 -->
-    <svg class="hero-bg-svg" viewBox="0 0 390 280" xmlns="http://www.w3.org/2000/svg">
-      <!-- 竹子桿 - 左側 -->
-      <rect x="20" y="0" width="8" height="280" rx="4" fill="#34D399" opacity="0.6" />
-      <rect x="36" y="20" width="5" height="240" rx="3" fill="#6EE7B7" opacity="0.4" />
-      <rect x="50" y="10" width="7" height="260" rx="3" fill="#34D399" opacity="0.5" />
-      <!-- 竹節 -->
-      <rect x="18" y="60" width="12" height="3" rx="1" fill="#059669" opacity="0.7" />
-      <rect x="18" y="120" width="12" height="3" rx="1" fill="#059669" opacity="0.7" />
-      <rect x="18" y="180" width="12" height="3" rx="1" fill="#059669" opacity="0.7" />
-      <!-- 竹葉 -->
-      <ellipse cx="30" cy="55" rx="18" ry="6" transform="rotate(-30 30 55)" fill="#6EE7B7" opacity="0.7" />
-      <ellipse cx="15" cy="115" rx="16" ry="5" transform="rotate(25 15 115)" fill="#34D399" opacity="0.6" />
-
-      <!-- 大熊貓身體（簡化卡通風格） - 右側 -->
-      <ellipse cx="300" cy="200" rx="55" ry="60" fill="#FFFFFF" opacity="0.9" />
-      <!-- 耳朵 -->
-      <circle cx="265" cy="155" r="18" fill="#1F2937" opacity="0.85" />
-      <circle cx="265" cy="155" r="10" fill="#FFFFFF" opacity="0.4" />
-      <circle cx="335" cy="155" r="18" fill="#1F2937" opacity="0.85" />
-      <circle cx="335" cy="155" r="10" fill="#FFFFFF" opacity="0.4" />
-      <!-- 頭部 -->
-      <ellipse cx="300" cy="175" rx="42" ry="40" fill="#FFFFFF" opacity="0.92" />
-      <!-- 眼睛 (黑眼圈) -->
-      <ellipse cx="284" cy="168" rx="12" ry="11" fill="#1F2937" opacity="0.9" />
-      <ellipse cx="316" cy="168" rx="12" ry="11" fill="#1F2937" opacity="0.9" />
-      <!-- 眼珠 -->
-      <circle cx="286" cy="168" r="5" fill="#fff" />
-      <circle cx="318" cy="168" r="5" fill="#fff" />
-      <circle cx="287" cy="168" r="3" fill="#111" />
-      <circle cx="319" cy="168" r="3" fill="#111" />
-      <!-- 反光點 -->
-      <circle cx="288" cy="166" r="1.5" fill="#fff" />
-      <circle cx="320" cy="166" r="1.5" fill="#fff" />
-      <!-- 鼻子 -->
-      <ellipse cx="300" cy="178" rx="7" ry="5" fill="#1F2937" opacity="0.8" />
-      <!-- 嘴巴 -->
-      <path d="M294 183 Q300 188 306 183" stroke="#1F2937" stroke-width="2" fill="none" opacity="0.7"
-        stroke-linecap="round" />
-      <!-- 身體四肢 -->
-      <ellipse cx="255" cy="235" rx="22" ry="15" fill="#1F2937" opacity="0.7" />
-      <ellipse cx="345" cy="235" rx="22" ry="15" fill="#1F2937" opacity="0.7" />
-      <!-- 竹子（熊貓手持） -->
-      <rect x="305" y="195" width="5" height="50" rx="2" fill="#34D399" opacity="0.8" />
-      <rect x="315" y="200" width="4" height="40" rx="2" fill="#6EE7B7" opacity="0.6" />
-
-      <!-- 川劇面具（右上角裝飾） -->
-      <g transform="translate(340, 30) rotate(15)">
-        <ellipse cx="20" cy="22" rx="18" ry="22" fill="#DC2626" opacity="0.85" />
-        <ellipse cx="14" cy="17" rx="5" ry="7" fill="#FEF3C7" opacity="0.9" />
-        <ellipse cx="26" cy="17" rx="5" ry="7" fill="#FEF3C7" opacity="0.9" />
-        <ellipse cx="14" cy="17" rx="3" ry="4" fill="#1F2937" opacity="0.8" />
-        <ellipse cx="26" cy="17" rx="3" ry="4" fill="#1F2937" opacity="0.8" />
-        <path d="M13 28 Q20 33 27 28" stroke="#FCD34D" stroke-width="2" fill="none" stroke-linecap="round" />
-        <path d="M4 10 Q20 -2 36 10" stroke="#FCD34D" stroke-width="1.5" fill="none" opacity="0.7" />
-      </g>
-
-      <!-- 三星堆面具輪廓（左下角） -->
-      <g transform="translate(60, 180) scale(0.6)" opacity="0.5">
-        <ellipse cx="50" cy="45" rx="38" ry="42" fill="none" stroke="#D97706" stroke-width="3" />
-        <!-- 凸眼 -->
-        <ellipse cx="32" cy="38" rx="12" ry="8" fill="none" stroke="#D97706" stroke-width="2.5" />
-        <ellipse cx="68" cy="38" rx="12" ry="8" fill="none" stroke="#D97706" stroke-width="2.5" />
-        <!-- 耳朵 -->
-        <path d="M12 35 Q0 45 12 55" stroke="#D97706" stroke-width="2.5" fill="none" />
-        <path d="M88 35 Q100 45 88 55" stroke="#D97706" stroke-width="2.5" fill="none" />
-        <!-- 嘴巴 -->
-        <path d="M28 62 Q50 72 72 62" stroke="#D97706" stroke-width="2.5" fill="none" />
-      </g>
+    <!-- SVG 插圖裝飾：大熊貓剪影（右下角小裝飾） -->
+    <svg class="hero-bg-svg" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- 簡化大熊貓剪影 -->
+      <ellipse cx="100" cy="110" rx="50" ry="55" fill="#FFFFFF" opacity="0.8" />
+      <circle cx="70" cy="65" r="16" fill="#1F2937" opacity="0.7" />
+      <circle cx="130" cy="65" r="16" fill="#1F2937" opacity="0.7" />
+      <ellipse cx="100" cy="85" rx="38" ry="36" fill="#FFFFFF" opacity="0.85" />
+      <ellipse cx="86" cy="80" rx="10" ry="9" fill="#1F2937" opacity="0.8" />
+      <ellipse cx="114" cy="80" rx="10" ry="9" fill="#1F2937" opacity="0.8" />
+      <circle cx="87" cy="80" r="4" fill="#fff" />
+      <circle cx="115" cy="80" r="4" fill="#fff" />
+      <ellipse cx="100" cy="90" rx="6" ry="4" fill="#1F2937" opacity="0.7" />
+      <!-- 竹子 -->
+      <rect x="155" y="20" width="6" height="150" rx="3" fill="#34D399" opacity="0.5" />
+      <rect x="170" y="40" width="4" height="120" rx="2" fill="#6EE7B7" opacity="0.4" />
+      <ellipse cx="160" cy="50" rx="14" ry="5" transform="rotate(-25 160 50)" fill="#6EE7B7" opacity="0.6" />
     </svg>
 
     <div class="hero-gradient"></div>
     <div class="hero-content">
       <div class="hero-logo">🗺️ 旅途日記</div>
       <h1 class="hero-title">成都深度旅遊</h1>
-      <p class="hero-date">2025 年 3月15日 — 3月19日</p>
+      <p class="hero-date">2025 年 5月16日 — 5月24日</p>
       <div class="hero-badges">
-        <span class="badge amber">🕐 5天4夜</span>
+        <span class="badge amber">🕐 9天8夜</span>
         <span class="badge">✈️ 四川 成都</span>
+        <span class="badge">🏔️ 九寨溝 · 黃龍</span>
         <span class="badge">👥 2 人同行</span>
       </div>
     </div>
@@ -527,32 +538,32 @@
   <div class="stats-bar">
     <div class="stat-item">
       <span class="stat-icon">📅</span>
-      <span class="stat-value">5天</span>
+      <span class="stat-value">9天</span>
       <span class="stat-label">行程天數</span>
     </div>
     <div class="stat-item">
+      <span class="stat-icon">🏨</span>
+      <span class="stat-value">5家</span>
+      <span class="stat-label">住宿</span>
+    </div>
+    <div class="stat-item">
       <span class="stat-icon">📍</span>
-      <span class="stat-value">18個</span>
+      <span class="stat-value">20+</span>
       <span class="stat-label">景點</span>
     </div>
     <div class="stat-item">
       <span class="stat-icon">🚗</span>
-      <span class="stat-value">~120km</span>
+      <span class="stat-value">~800km</span>
       <span class="stat-label">總里程</span>
     </div>
     <div class="stat-item">
-      <span class="stat-icon">💰</span>
-      <span class="stat-value">¥3000</span>
-      <span class="stat-label">預算/人</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-icon">🌤️</span>
-      <span class="stat-value">晴為主</span>
-      <span class="stat-label">天氣</span>
+      <span class="stat-icon">✈️</span>
+      <span class="stat-value">桃園↔成都</span>
+      <span class="stat-label">航班</span>
     </div>
   </div>
 
-  <!-- ===== 每日行程卡片 ===== -->
+  <!-- ===== 每日行程卡片（9天） ===== -->
   <div class="section-header">
     <div class="section-dot"></div>
     <h2>行程總覽</h2>
@@ -567,16 +578,17 @@
       </div>
       <div class="day-body">
         <div class="day-meta">
-          <span class="day-date">3月15日（週六）</span>
+          <span class="day-date">5月16日（週五）</span>
         </div>
-        <div class="day-theme">初抵城市 · 市中心探索 🏙️</div>
+        <div class="day-theme">抵達成都 · 市區初體驗 🏙️</div>
+        <div class="day-hotel">🏨 春熙路國際金融中心亞朵酒店</div>
         <div class="attraction-tags">
-          <span class="tag">天府廣場</span>
-          <span class="tag">寬窄巷子</span>
-          <span class="tag">杜甫草堂</span>
-          <span class="tag">錦里古街</span>
+          <span class="tag">春熙路</span>
+          <span class="tag">太古里</span>
+          <span class="tag">IFS熊貓</span>
+          <span class="tag">火鍋</span>
         </div>
-        <div class="day-transport">🚇 地鐵 &nbsp;🚕 計程車 &nbsp;🚶 步行</div>
+        <div class="day-transport">✈️ 抵達 &nbsp;🚕 機場→飯店 &nbsp;🚶 步行</div>
       </div>
       <div class="day-arrow">›</div>
     </a>
@@ -589,80 +601,227 @@
       </div>
       <div class="day-body">
         <div class="day-meta">
-          <span class="day-date">3月16日（週日）</span>
+          <span class="day-date">5月17日（週六）</span>
         </div>
-        <div class="day-theme">大熊貓 · 文化聖地 🐼</div>
+        <div class="day-theme">黃龍溪古鎮一日遊 🏮</div>
+        <div class="day-hotel">🏨 春熙路國際金融中心亞朵酒店（同上）</div>
         <div class="attraction-tags">
-          <span class="tag">熊貓繁育基地</span>
-          <span class="tag">武侯祠</span>
-          <span class="tag">錦里古街</span>
-          <span class="tag">四川火鍋</span>
+          <span class="tag">黃龍溪古鎮</span>
+          <span class="tag">古街漫步</span>
+          <span class="tag">當地小吃</span>
         </div>
-        <div class="day-transport">🚕 滴滴 &nbsp;🚇 地鐵 &nbsp;🚶 步行</div>
+        <div class="day-transport">🚕 滴滴 / 包車 &nbsp;🚶 步行</div>
       </div>
       <div class="day-arrow">›</div>
     </a>
 
-    <!-- Day 3（示意，待完善） -->
-    <div class="day-card" style="opacity:0.65; cursor:default;">
+    <!-- Day 3 -->
+    <div class="day-card disabled">
       <div class="day-accent accent-d3">
         <span class="day-num">3</span>
         <span class="day-label">DAY</span>
       </div>
       <div class="day-body">
         <div class="day-meta">
-          <span class="day-date">3月17日（週一）</span>
+          <span class="day-date">5月18日（週日）</span>
         </div>
-        <div class="day-theme">樂山大佛 · 峨眉山 ⛰️</div>
+        <div class="day-theme">移動前往九寨溝 🚌</div>
+        <div class="day-hotel">🏨 四季雲隱·五恆全氧民宿（彭豐村）</div>
         <div class="attraction-tags">
-          <span class="tag">樂山大佛</span>
-          <span class="tag">峨眉山牌坊</span>
-          <span class="tag">報國寺</span>
+          <span class="tag">長途移動日</span>
+          <span class="tag">車程約8hr</span>
+          <span class="tag">沿途風景</span>
         </div>
-        <div class="day-transport">🚌 高鐵 &nbsp;🚕 計程車</div>
+        <div class="day-transport">🚌 巴士 / 包車 &nbsp;🏔️ 高原公路</div>
       </div>
-      <div class="day-arrow" style="font-size:12px;color:#9CA3AF;">規劃中</div>
+      <div class="day-arrow"><span class="day-arrow-text">規劃中</span></div>
     </div>
 
     <!-- Day 4 -->
-    <div class="day-card" style="opacity:0.65; cursor:default;">
+    <div class="day-card disabled">
       <div class="day-accent accent-d4">
         <span class="day-num">4</span>
         <span class="day-label">DAY</span>
       </div>
       <div class="day-body">
         <div class="day-meta">
-          <span class="day-date">3月18日（週二）</span>
+          <span class="day-date">5月19日（週一）</span>
         </div>
-        <div class="day-theme">古蜀文明 · 三星堆 🏛️</div>
+        <div class="day-theme">九寨溝景區深度遊 💎</div>
+        <div class="day-hotel">🏨 四季雲隱·五恆全氧民宿（同上）</div>
         <div class="attraction-tags">
-          <span class="tag">三星堆博物館</span>
-          <span class="tag">金沙遺址</span>
+          <span class="tag">九寨溝</span>
+          <span class="tag">五花海</span>
+          <span class="tag">珍珠灘瀑布</span>
+          <span class="tag">鏡海</span>
         </div>
-        <div class="day-transport">🚌 高速巴士 &nbsp;🚕 計程車</div>
+        <div class="day-transport">🚌 景區觀光車</div>
       </div>
-      <div class="day-arrow" style="font-size:12px;color:#9CA3AF;">規劃中</div>
+      <div class="day-arrow"><span class="day-arrow-text">規劃中</span></div>
     </div>
 
     <!-- Day 5 -->
-    <div class="day-card" style="opacity:0.65; cursor:default;">
+    <div class="day-card disabled">
       <div class="day-accent accent-d5">
         <span class="day-num">5</span>
         <span class="day-label">DAY</span>
       </div>
       <div class="day-body">
         <div class="day-meta">
-          <span class="day-date">3月19日（週三）</span>
+          <span class="day-date">5月20日（週二）</span>
         </div>
-        <div class="day-theme">美食購物 · 返程 🛍️</div>
+        <div class="day-theme">移動至川主寺 · 藏式風情 🏕️</div>
+        <div class="day-hotel">🏨 雲起·迦境 藏式奢享民宿</div>
         <div class="attraction-tags">
-          <span class="tag">春熙路</span>
-          <span class="tag">IFS成都</span>
-          <span class="tag">機場</span>
+          <span class="tag">川主寺</span>
+          <span class="tag">藏族文化</span>
+          <span class="tag">高原草甸</span>
         </div>
-        <div class="day-transport">🚇 地鐵 &nbsp;✈️ 飛機</div>
+        <div class="day-transport">🚌 巴士 &nbsp;🚕 計程車</div>
       </div>
-      <div class="day-arrow" style="font-size:12px;color:#9CA3AF;">規劃中</div>
+      <div class="day-arrow"><span class="day-arrow-text">規劃中</span></div>
+    </div>
+
+    <!-- Day 6 -->
+    <div class="day-card disabled">
+      <div class="day-accent accent-d6">
+        <span class="day-num">6</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">5月21日（週三）</span>
+        </div>
+        <div class="day-theme">黃龍景區 · 返回成都 🐉</div>
+        <div class="day-hotel">🏨 凱特麗亞創意主題飯店公寓</div>
+        <div class="attraction-tags">
+          <span class="tag">黃龍景區</span>
+          <span class="tag">五彩池</span>
+          <span class="tag">返回成都</span>
+        </div>
+        <div class="day-transport">� 景區接駁 &nbsp;✈️/� 返蓉</div>
+      </div>
+      <div class="day-arrow"><span class="day-arrow-text">規劃中</span></div>
+    </div>
+
+    <!-- Day 7 -->
+    <div class="day-card disabled">
+      <div class="day-accent accent-d7">
+        <span class="day-num">7</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">5月22日（週四）</span>
+        </div>
+        <div class="day-theme">成都周邊 · 市區景點 🐼</div>
+        <div class="day-hotel">🏨 凱特麗亞創意主題飯店公寓（同上）</div>
+        <div class="attraction-tags">
+          <span class="tag">熊貓基地</span>
+          <span class="tag">寬窄巷子</span>
+          <span class="tag">杜甫草堂</span>
+          <span class="tag">武侯祠</span>
+        </div>
+        <div class="day-transport">� 地鐵 &nbsp;� 滴滴 &nbsp;🚶 步行</div>
+      </div>
+      <div class="day-arrow"><span class="day-arrow-text">規劃中</span></div>
+    </div>
+
+    <!-- Day 8 -->
+    <div class="day-card disabled">
+      <div class="day-accent accent-d8">
+        <span class="day-num">8</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">5月23日（週五）</span>
+        </div>
+        <div class="day-theme">最後採買 · 前往機場 🛍️</div>
+        <div class="day-hotel">🏨 天府空港悅享飯店（天府機場旁）</div>
+        <div class="attraction-tags">
+          <span class="tag">春熙路購物</span>
+          <span class="tag">伴手禮</span>
+          <span class="tag">轉移機場</span>
+        </div>
+        <div class="day-transport">� 地鐵 &nbsp;🚕 計程車 &nbsp;🚌 機場巴士</div>
+      </div>
+      <div class="day-arrow"><span class="day-arrow-text">規劃中</span></div>
+    </div>
+
+    <!-- Day 9 -->
+    <div class="day-card disabled">
+      <div class="day-accent accent-d9">
+        <span class="day-num">9</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">5月24日（週六）</span>
+        </div>
+        <div class="day-theme">回家！✈️ 返回溫暖的家 🏠</div>
+        <div class="day-hotel">✈️ 08:10 航班起飛 → 桃園</div>
+        <div class="attraction-tags">
+          <span class="tag">清晨出發</span>
+          <span class="tag">天府機場</span>
+          <span class="tag">回台灣</span>
+        </div>
+        <div class="day-transport">🚌 飯店接駁 &nbsp;✈️ 飛機</div>
+      </div>
+      <div class="day-arrow"><span class="day-arrow-text">最終日</span></div>
+    </div>
+  </div>
+
+  <!-- ===== 住宿總覽 ===== -->
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--teal);"></div>
+    <h2>🏨 住宿總覽</h2>
+  </div>
+
+  <div class="hotel-cards">
+    <div class="hotel-card">
+      <div class="hotel-icon">🌆</div>
+      <div class="hotel-info">
+        <div class="hotel-name">春熙路國際金融中心亞朵酒店</div>
+        <div class="hotel-nights">📅 Day 1–2（5/16-17，2晚）</div>
+        <div class="hotel-desc">位於春熙路/太古里商圈，逛街吃火鍋超方便</div>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-icon">🏔️</div>
+      <div class="hotel-info">
+        <div class="hotel-name">四季雲隱·五恆全氧民宿</div>
+        <div class="hotel-nights">📅 Day 3–4（5/18-19，2晚）</div>
+        <div class="hotel-desc">位於九寨溝彭豐村，近景區入口，高原氧吧</div>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-icon">🏕️</div>
+      <div class="hotel-info">
+        <div class="hotel-name">雲起·迦境 藏式奢享民宿</div>
+        <div class="hotel-nights">📅 Day 5（5/20，1晚）</div>
+        <div class="hotel-desc">位於川主寺，方便隔天前往黃龍景區</div>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-icon">🎨</div>
+      <div class="hotel-info">
+        <div class="hotel-name">凱特麗亞創意主題飯店公寓</div>
+        <div class="hotel-nights">📅 Day 6–7（5/21-22，2晚）</div>
+        <div class="hotel-desc">回到春熙太古里商圈，機能便利</div>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <div class="hotel-icon">✈️</div>
+      <div class="hotel-info">
+        <div class="hotel-name">天府空港悅享飯店</div>
+        <div class="hotel-nights">📅 Day 8（5/23，1晚）</div>
+        <div class="hotel-desc">天府機場旁，為隔天 08:10 早班機做準備</div>
+      </div>
     </div>
   </div>
 
@@ -682,20 +841,24 @@
   </div>
   <div class="tips-card">
     <div class="tip-item">
+      <span class="tip-icon">🏔️</span>
+      <span class="tip-text">九寨溝/黃龍海拔 3000m+，建議提前服用紅景天預防高山症。</span>
+    </div>
+    <div class="tip-item">
       <span class="tip-icon">💰</span>
       <span class="tip-text">建議備帶少量現金，部分小吃攤與古街店家不接受刷卡。</span>
     </div>
     <div class="tip-item">
       <span class="tip-icon">🌡️</span>
-      <span class="tip-text">成都春季早晚溫差大，建議採洋蔥式穿搭，早晚加件薄外套。</span>
+      <span class="tip-text">5月成都市區 20-30°C，但九寨溝/黃龍僅 5-15°C，務必準備保暖外套。</span>
     </div>
     <div class="tip-item">
       <span class="tip-icon">📱</span>
       <span class="tip-text">下載支付寶或微信支付，絕大多數景點、餐廳、交通均使用 QR 碼付款。</span>
     </div>
     <div class="tip-item">
-      <span class="tip-icon">🐼</span>
-      <span class="tip-text">熊貓基地建議 08:00 開門即進場，下午熊貓午睡不活躍，效果大不同！</span>
+      <span class="tip-icon">�</span>
+      <span class="tip-text">成都往九寨溝車程約 8 小時，建議準備暈車藥、零食與充電設備。</span>
     </div>
   </div>
 
@@ -731,50 +894,58 @@
     /**
      * 初始化總覽地圖
      * 顯示行程所有景點的標記，不同天用不同顏色區分
+     * 9天行程涵蓋：成都市區 → 黃龍溪 → 九寨溝 → 黃龍 → 成都
      */
 
-    // 各天景點資料（包含名稱、座標、顏色）
+    // 各天代表性景點（座標為 GCJ-02 高德坐標系）
     const allSpots = [
-      // Day 1 - 琥珀色
-      { day: 1, name: '天府廣場', lat: 30.6579, lng: 104.0655, color: '#F59E0B' },
-      { day: 1, name: '寬窄巷子', lat: 30.6726, lng: 104.0536, color: '#F59E0B' },
-      { day: 1, name: '青羊宮', lat: 30.6657, lng: 104.0417, color: '#F59E0B' },
-      { day: 1, name: '杜甫草堂', lat: 30.6655, lng: 104.0359, color: '#F59E0B' },
-      { day: 1, name: '錦里古街', lat: 30.6431, lng: 104.0476, color: '#F59E0B' },
+      // Day 1 - 琥珀色（抵達成都市區）
       { day: 1, name: '春熙路', lat: 30.6574, lng: 104.0810, color: '#F59E0B' },
+      { day: 1, name: 'IFS成都', lat: 30.6558, lng: 104.0793, color: '#F59E0B' },
+      { day: 1, name: '太古里', lat: 30.6547, lng: 104.0820, color: '#F59E0B' },
 
-      // Day 2 - 翠綠色
-      { day: 2, name: '熊貓繁育基地', lat: 30.7322, lng: 104.1355, color: '#10B981' },
-      { day: 2, name: '武侯祠', lat: 30.6432, lng: 104.0474, color: '#10B981' },
-      { day: 2, name: '錦里古街', lat: 30.6431, lng: 104.0476, color: '#10B981' },
+      // Day 2 - 翠綠色（黃龍溪古鎮）
+      { day: 2, name: '黃龍溪古鎮', lat: 30.3184, lng: 103.9711, color: '#10B981' },
 
-      // Day 3 - 藍色
-      { day: 3, name: '樂山大佛', lat: 29.5450, lng: 103.7836, color: '#3B82F6' },
-      { day: 3, name: '峨眉山', lat: 29.5984, lng: 103.4847, color: '#3B82F6' },
+      // Day 3 - 藍色（移動至九寨溝）
+      { day: 3, name: '九寨溝·彭豐村', lat: 33.1600, lng: 103.8500, color: '#3B82F6' },
 
-      // Day 4 - 紫色
-      { day: 4, name: '三星堆博物館', lat: 31.0084, lng: 104.3534, color: '#8B5CF6' },
-      { day: 4, name: '金沙遺址', lat: 30.6752, lng: 104.0109, color: '#8B5CF6' },
+      // Day 4 - 青色（九寨溝景區）
+      { day: 4, name: '九寨溝景區', lat: 33.2600, lng: 103.9200, color: '#06B6D4' },
 
-      // Day 5 - 紅色
-      { day: 5, name: '春熙路', lat: 30.6574, lng: 104.0810, color: '#EF4444' },
-      { day: 5, name: 'IFS成都', lat: 30.6558, lng: 104.0793, color: '#EF4444' },
+      // Day 5 - 紫色（川主寺）
+      { day: 5, name: '川主寺', lat: 32.7500, lng: 103.5700, color: '#8B5CF6' },
+
+      // Day 6 - 玫紅（黃龍景區）
+      { day: 6, name: '黃龍景區', lat: 32.7284, lng: 103.8312, color: '#EC4899' },
+
+      // Day 7 - 橙色（成都市區景點）
+      { day: 7, name: '熊貓繁育基地', lat: 30.7322, lng: 104.1355, color: '#F97316' },
+      { day: 7, name: '寬窄巷子', lat: 30.6726, lng: 104.0536, color: '#F97316' },
+      { day: 7, name: '杜甫草堂', lat: 30.6655, lng: 104.0359, color: '#F97316' },
+      { day: 7, name: '武侯祠', lat: 30.6432, lng: 104.0474, color: '#F97316' },
+
+      // Day 8 - 青綠（購物+機場）
+      { day: 8, name: '春熙路購物', lat: 30.6574, lng: 104.0810, color: '#14B8A6' },
+      { day: 8, name: '天府國際機場', lat: 30.3135, lng: 104.4451, color: '#14B8A6' },
+
+      // Day 9 - 紅色（返程）
+      { day: 9, name: '天府機場出發', lat: 30.3135, lng: 104.4451, color: '#EF4444' },
     ];
 
     // 等 AMap SDK 完全載入後才初始化
     window.onload = function () {
       try {
-        // 建立地圖，以成都市中心為初始中心點
+        // 建立地圖（較大視角以涵蓋成都到九寨溝）
         var map = new AMap.Map('amap-overview', {
-          zoom: 11,                          // 縮放等級
-          center: [104.0665, 30.6572],       // 成都市中心經緯度
-          mapStyle: 'amap://styles/whitesmoke', // 淡雅地圖樣式
+          zoom: 7,
+          center: [104.0665, 31.5000],        // 四川中部偏北
+          mapStyle: 'amap://styles/whitesmoke',
           resizeEnable: true,
         });
 
         // 在地圖上加入所有景點標記
         allSpots.forEach(function (spot) {
-          // 自訂圓形標記（以景點顏色區分不同天）
           var marker = new AMap.CircleMarker({
             center: new AMap.LngLat(spot.lng, spot.lat),
             radius: 7,
@@ -806,18 +977,21 @@
 
         // 圖例（各天顏色說明）
         var legend = document.createElement('div');
-        legend.style.cssText = 'position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,0.92);border-radius:8px;padding:6px 10px;font-size:10px;font-family:sans-serif;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.15);';
+        legend.style.cssText = 'position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,0.92);border-radius:8px;padding:6px 10px;font-size:9px;font-family:sans-serif;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.15);line-height:1.6;';
         legend.innerHTML = [
-          '<span style="color:#F59E0B;">● </span>Day1',
-          '<span style="color:#10B981;">● </span>Day2',
-          '<span style="color:#3B82F6;">● </span>Day3',
-          '<span style="color:#8B5CF6;">● </span>Day4',
-          '<span style="color:#EF4444;">● </span>Day5',
+          '<span style="color:#F59E0B;">● </span>D1',
+          '<span style="color:#10B981;">● </span>D2',
+          '<span style="color:#3B82F6;">● </span>D3',
+          '<span style="color:#06B6D4;">● </span>D4',
+          '<span style="color:#8B5CF6;">● </span>D5',
+          '<span style="color:#EC4899;">● </span>D6',
+          '<span style="color:#F97316;">● </span>D7',
+          '<span style="color:#14B8A6;">● </span>D8',
+          '<span style="color:#EF4444;">● </span>D9',
         ].join('  ');
         document.getElementById('amap-overview').appendChild(legend);
 
       } catch (e) {
-        // 地圖載入失敗時顯示提示
         document.getElementById('amap-overview').innerHTML =
           '<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#F3F4F6;border-radius:16px;color:#6B7280;font-size:14px;">地圖載入中...</div>';
       }
