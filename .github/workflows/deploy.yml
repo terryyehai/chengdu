@@ -1,35 +1,48 @@
 # ============================================
-# 🚀 Cloudflare Pages 自動部署
+# 🚀 GitHub Pages 自動部署
 # ============================================
-# 當程式碼推送到 main 分支時，自動部署到 Cloudflare Pages。
-# 
-# ⚠️ 需要在 GitHub 設定 2 個 Secrets：
-#   1. CLOUDFLARE_ACCOUNT_ID  → 你的 Cloudflare 帳號 ID
-#   2. CLOUDFLARE_API_TOKEN   → Cloudflare API Token（需有 Pages 編輯權限）
+# 當程式碼推送到 main 分支時，自動部署到 GitHub Pages。
+# 純靜態 HTML，不需要任何建置步驟。
+# 部署後網址：https://terryyehai.github.io/chengdu/
 # ============================================
 
-name: 🚀 Deploy to Cloudflare Pages
+name: 🚀 Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:  # 允許手動觸發部署
+  workflow_dispatch:  # 允許手動觸發
+
+# 授予 GitHub Pages 部署所需的權限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一時間只允許一個部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Cloudflare Pages
-    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      # 第一步：拉取程式碼
-      - name: 📥 Checkout code
+      - name: 📥 拉取程式碼
         uses: actions/checkout@v4
 
-      # 第二步：部署到 Cloudflare Pages
-      - name: 🚀 Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+      - name: 📦 設定 GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: 📤 上傳靜態檔案
+        uses: actions/upload-pages-artifact@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # 部署整個專案目錄（靜態 HTML，不需要建置步驟）
-          command: pages deploy . --project-name=chengdu
+          path: '.'  # 整個根目錄就是靜態網站
+
+      - name: 🚀 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
