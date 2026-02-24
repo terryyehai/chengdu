@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>Day 1 · 抵達成都 · 市區初體驗｜成都旅遊 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title>Day 5 · 二進九寨溝 · 移宿川主寺｜成都旅遊 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <script>window._AMapSecurityConfig = { securityJsCode: '6906803561bf037e99aa8ceb1de31bee' };</script>
     <script
-        src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.Driving,AMap.Walking,AMap.InfoWindow"></script>
+        src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.InfoWindow"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -19,7 +18,7 @@
         }
 
         :root {
-            --amber: #F59E0B;
+            --c: #8B5CF6;
             --navy: #1E3A5F;
             --cream: #FFF8F0;
             --card: #fff;
@@ -37,7 +36,6 @@
             padding-bottom: 30px
         }
 
-        /* 頂部列 */
         .top {
             position: sticky;
             top: 0;
@@ -74,11 +72,10 @@
             color: var(--sub)
         }
 
-        /* 日橫幅 */
         .banner {
             position: relative;
             height: 180px;
-            background: url('https://images.unsplash.com/photo-1600111893479-a4c9e2b3d6d0?w=800&q=80') center/cover;
+            background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80') center/cover;
             display: flex;
             align-items: flex-end;
             padding: 16px;
@@ -89,7 +86,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(245, 158, 11, .85), rgba(245, 158, 11, .2) 60%, transparent)
+            background: linear-gradient(to top, rgba(139, 92, 246, .85), rgba(139, 92, 246, .2) 60%, transparent)
         }
 
         .banner * {
@@ -118,7 +115,6 @@
             margin-top: 4px
         }
 
-        /* 區段 */
         .sec-head {
             padding: 20px 16px 8px;
             display: flex;
@@ -138,7 +134,6 @@
             flex-shrink: 0
         }
 
-        /* 時間軸 */
         .timeline {
             padding: 0 16px
         }
@@ -166,7 +161,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            border: 3px solid var(--amber);
+            border: 3px solid var(--c);
             background: #fff;
             flex-shrink: 0;
             z-index: 1
@@ -185,12 +180,12 @@
             border-radius: 12px;
             box-shadow: var(--shadow);
             padding: 12px;
-            border-left: 3px solid var(--amber)
+            border-left: 3px solid var(--c)
         }
 
         .tl-time {
             font-size: 11px;
-            color: var(--amber);
+            color: var(--c);
             font-weight: 700;
             margin-bottom: 4px
         }
@@ -215,15 +210,14 @@
         }
 
         .tl-tag {
-            background: #FEF3C7;
-            color: #92400E;
+            background: #EDE9FE;
+            color: #5B21B6;
             padding: 2px 8px;
             border-radius: 10px;
             font-size: 10px;
             font-weight: 600
         }
 
-        /* 住宿卡 */
         .hotel-card {
             margin: 0 16px;
             background: var(--card);
@@ -252,7 +246,6 @@
             margin-top: 2px
         }
 
-        /* 提示 */
         .tips {
             margin: 0 16px;
             background: #FFFBEB;
@@ -279,7 +272,6 @@
             flex-shrink: 0
         }
 
-        /* 地圖 */
         #map {
             width: calc(100% - 32px);
             height: 200px;
@@ -289,55 +281,59 @@
             box-shadow: var(--shadow)
         }
 
-        /* 下一天 */
-        .next-day {
-            margin: 16px;
-            text-align: center
+        .nav-btns {
+            display: flex;
+            gap: 10px;
+            padding: 16px;
+            justify-content: center
         }
 
-        .next-day a {
+        .nav-btns a {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--amber);
-            color: #fff;
-            padding: 12px 24px;
+            gap: 6px;
+            padding: 12px 20px;
             border-radius: 24px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, .3);
+            font-size: 13px;
             transition: transform .15s
         }
 
-        .next-day a:active {
+        .nav-btns a:active {
             transform: scale(.96)
+        }
+
+        .btn-prev {
+            background: #F3F4F6;
+            color: var(--navy)
+        }
+
+        .btn-next {
+            background: var(--c);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, .3)
         }
     </style>
 </head>
 
 <body>
-    <!-- 頂部導覽 -->
-    <div class="top">
-        <a class="back" href="index.html">←</a>
+    <div class="top"><a class="back" href="index.html">←</a>
         <div>
-            <div class="top-title">Day 1 · 抵達成都</div>
-            <div class="top-sub">5月16日（週五）</div>
+            <div class="top-title">Day 5 · 二進九寨溝</div>
+            <div class="top-sub">5月20日（週二）</div>
         </div>
     </div>
-
-    <!-- 日橫幅 -->
     <div class="banner">
-        <div class="banner-num">01</div>
+        <div class="banner-num">05</div>
         <div class="banner-info">
-            <div class="theme">抵達成都 · 市區初體驗 🏙️</div>
-            <div class="meta">5月16日（週五）· 春熙路 / 太古里</div>
+            <div class="theme">二進九寨溝 · 移宿川主寺 🏕️</div>
+            <div class="meta">5月20日（週二）· 九寨溝補考 + 移動至川主寺</div>
         </div>
     </div>
 
-    <!-- 行程時間軸 -->
     <div class="sec-head">
-        <div class="dot" style="background:var(--amber)"></div>
+        <div class="dot" style="background:var(--c)"></div>
         <h2>📍 今日行程</h2>
     </div>
     <div class="timeline">
@@ -347,124 +343,109 @@
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">✈️ 12:40</div>
-                <div class="tl-title">抵達天府國際機場</div>
-                <div class="tl-desc">國泰航空 CX986 經香港轉機抵達。取行李後前往地鐵站。</div>
-                <div class="tl-tags"><span class="tl-tag">✈️ 航班抵達</span><span class="tl-tag">T2航廈</span></div>
+                <div class="tl-time">🌅 07:00 – 07:30</div>
+                <div class="tl-title">二度入園！</div>
+                <div class="tl-desc">再次早起入園。今天的目標是：昨天沒看夠的景點補考、光線不對沒拍好的海子重拍、享受更悠閒的慢步調。</div>
+                <div class="tl-tags"><span class="tl-tag">🎫 二進溝</span><span class="tl-tag">📸 補考</span></div>
             </div>
         </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">🚇 13:00 – 15:30</div>
-                <div class="tl-title">搭乘地鐵 18 號線至市區</div>
-                <div class="tl-desc">天府機場 → 地鐵18號線 → 轉乘至春熙路站。車程約1.5~2小時，票價約10元人民幣。</div>
-                <div class="tl-tags"><span class="tl-tag">🚇 地鐵</span><span class="tl-tag">18號線</span></div>
+                <div class="tl-time">🌿 07:30 – 12:00</div>
+                <div class="tl-title">精選景點深度遊</div>
+                <div class="tl-desc">根據昨天的遺珠，挑選最想再看的海子慢慢品味。建議重訪五花海（早上光線不同，顏色完全變化）、鏡海（清晨無風時的完美倒影）。走棧道instead
+                    of坐車，感受原始森林的寧靜。</div>
+                <div class="tl-tags"><span class="tl-tag">🪞 鏡海</span><span class="tl-tag">🌺 五花海</span><span
+                        class="tl-tag">🌲 原始森林</span></div>
             </div>
         </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">🏨 16:00</div>
-                <div class="tl-title">飯店 Check-in</div>
-                <div class="tl-desc">春熙路國際金融中心亞朵酒店。放下行李，整理一下，準備出發探索！</div>
-                <div class="tl-tags"><span class="tl-tag">🏨 入住</span><span class="tl-tag">春熙路商圈</span></div>
+                <div class="tl-time">🚶 12:00 – 13:30</div>
+                <div class="tl-title">午餐 & 出溝</div>
+                <div class="tl-desc">在景區內簡單用餐後，下午出溝。回民宿拿行李、退房。</div>
+                <div class="tl-tags"><span class="tl-tag">🧳 退房</span></div>
             </div>
         </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">📸 16:30 – 17:30</div>
-                <div class="tl-title">IFS 國際金融中心「爬牆熊貓」</div>
-                <div class="tl-desc">成都最紅打卡地標！7樓露台有巨型攀爬大熊貓雕塑，從不同角度拍照效果超好。頂層還能俯瞰整座春熙路商圈。</div>
-                <div class="tl-tags"><span class="tl-tag">📸 必拍打卡</span><span class="tl-tag">🐼 地標</span></div>
+                <div class="tl-time">🚕 14:30 – 16:30</div>
+                <div class="tl-title">拼車/大巴 → 川主寺鎮</div>
+                <div class="tl-desc">從九寨溝搭車前往松潘縣的「川主寺鎮」，車程約2小時。沿途是壯麗的高原公路風景，草甸、犛牛、雪山盡收眼底。</div>
+                <div class="tl-tags"><span class="tl-tag">🚕 拼車</span><span class="tl-tag">⏱ ~2hr</span><span
+                        class="tl-tag">🏔️ 高原公路</span></div>
             </div>
         </div>
-        <div class="tl-item">
-            <div class="tl-line">
-                <div class="tl-dot"></div>
-                <div class="tl-bar"></div>
-            </div>
-            <div class="tl-card">
-                <div class="tl-time">🚶 17:30 – 19:00</div>
-                <div class="tl-title">漫步太古里</div>
-                <div class="tl-desc">成都最時尚的開放式商業街區，中西融合建築風格。旁邊就是千年古寺「大慈寺」，古今交融超有氛圍感。</div>
-                <div class="tl-tags"><span class="tl-tag">🛍️ 購物</span><span class="tl-tag">⛩️ 大慈寺</span><span
-                        class="tl-tag">📸 拍照</span></div>
-            </div>
-        </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">🍲 19:00 – 21:00</div>
-                <div class="tl-title">道地四川麻辣火鍋 🌶️</div>
-                <div class="tl-desc">來成都第一件事——吃火鍋！推薦「小龍坎」或「蜀大俠」。建議點鴛鴦鍋（辣鍋+清湯鍋），必點毛肚、鵝腸、黃喉。也可以試試「串串香」，一根一根串著涮，更有成都街頭感。
-                </div>
-                <div class="tl-tags"><span class="tl-tag">🌶️ 火鍋</span><span class="tl-tag">🍢 串串香</span><span
-                        class="tl-tag">🔥 必吃</span></div>
+                <div class="tl-time">🏕️ 17:00</div>
+                <div class="tl-title">雲起·迦境 Check-in · 藏式晚宴</div>
+                <div class="tl-desc">入住藏式奢享民宿！這間民宿環境漂亮，有藏式裝潢和暖暖的氛圍。更棒的是他們提供「黃龍九寨高鐵站」免費拼車接送服務，記得提前打電話跟老闆確認明天去黃龍的接送時間！📞
+                    +86-13281872333</div>
+                <div class="tl-tags"><span class="tl-tag">🏕️ 藏式民宿</span><span class="tl-tag">📞 預約接送</span><span
+                        class="tl-tag">🍖 藏式晚餐</span></div>
             </div>
         </div>
     </div>
 
-    <!-- 住宿資訊 -->
     <div class="sec-head">
         <div class="dot" style="background:#0D9488"></div>
         <h2>🏨 今晚住宿</h2>
     </div>
     <div class="hotel-card">
-        <div class="icon">🌆</div>
+        <div class="icon">🏕️</div>
         <div>
-            <div class="name">春熙路國際金融中心亞朵酒店</div>
-            <div class="desc">📍 春熙路/太古里商圈核心位置<br>🛏️ 第 1 晚（共住 2 晚）<br>💡 出門即太古里、IFS，逛街吃火鍋超方便</div>
+            <div class="name">雲起·迦境 藏式奢享民宿（松潘川主寺鎮店）</div>
+            <div class="desc">📍 川主寺鎮，距黃龍景區約40分鐘車程<br>🛏️ 1 晚<br>🚗 提供黃龍九寨高鐵站免費拼車接送<br>📞 記得提前2小時打電話確認接送：+86-13281872333
+            </div>
         </div>
     </div>
 
-    <!-- 地圖 -->
     <div class="sec-head">
         <div class="dot" style="background:#3B82F6"></div>
-        <h2>🗺️ 景點地圖</h2>
+        <h2>🗺️ 路線地圖</h2>
     </div>
     <div id="map"></div>
 
-    <!-- 提示 -->
     <div class="sec-head">
         <div class="dot" style="background:#F87171"></div>
         <h2>💡 今日提醒</h2>
     </div>
     <div class="tips">
-        <div class="tip"><span class="tip-ic">📱</span><span>抵達後先買中國 SIM 卡或開通漫遊，下載支付寶/微信支付（大陸幾乎不用現金）。</span></div>
-        <div class="tip"><span class="tip-ic">🚇</span><span>地鐵18號線可直達市區，但高峰期需25分鐘一班，建議備好離線地圖。</span></div>
-        <div class="tip"><span class="tip-ic">🌶️</span><span>火鍋如果怕辣，一定要點鴛鴦鍋！「微辣」在四川已經是很辣了。</span></div>
-        <div class="tip"><span class="tip-ic">💰</span><span>建議備帶少量人民幣現金（約500元），部分地鐵售票機和小攤需要現金。</span></div>
+        <div class="tip"><span class="tip-ic">📞</span><span><strong>重要！</strong>抵達民宿後立刻打電話 (+86-13281872333)
+                跟老闆確認明天去黃龍的接送時間。</span></div>
+        <div class="tip"><span class="tip-ic">🏔️</span><span>明天的黃龍景區最高處海拔3500m+，是整趟旅程最高點。今晚好好休息、多喝水！</span></div>
+        <div class="tip"><span class="tip-ic">🧥</span><span>川主寺海拔約3000m，夜晚非常冷（可能5°C以下），穿暖！</span></div>
     </div>
 
-    <!-- 下一天 -->
-    <div class="next-day"><a href="day2.html">Day 2 · 黃龍溪古鎮 →</a></div>
+    <div class="nav-btns"><a class="btn-prev" href="day4.html">← Day 4</a><a class="btn-next" href="day6.html">Day 6 ·
+            黃龍景區 →</a></div>
 
     <script>
         window.onload = function () {
             try {
-                var map = new AMap.Map('map', { zoom: 14, center: [104.0810, 30.6560], mapStyle: 'amap://styles/whitesmoke', resizeEnable: true });
-                var spots = [
-                    { name: '天府國際機場', lat: 30.3135, lng: 104.4451, c: '#F59E0B' },
-                    { name: 'IFS 爬牆熊貓', lat: 30.6558, lng: 104.0793, c: '#F59E0B' },
-                    { name: '太古里', lat: 30.6547, lng: 104.0820, c: '#F59E0B' },
-                    { name: '亞朵酒店(春熙路)', lat: 30.6574, lng: 104.0810, c: '#0D9488' },
-                ];
-                spots.forEach(function (s) {
-                    var m = new AMap.CircleMarker({ center: [s.lng, s.lat], radius: 7, strokeColor: '#fff', strokeWeight: 2, fillColor: s.c, fillOpacity: .95, zIndex: 10, cursor: 'pointer' });
-                    m.setMap(map);
+                var map = new AMap.Map('map', { zoom: 9, center: [103.7, 33.0], mapStyle: 'amap://styles/whitesmoke', resizeEnable: true });
+                [{ name: '九寨溝景區', lat: 33.26, lng: 103.92, c: '#8B5CF6' }, { name: '川主寺鎮', lat: 32.75, lng: 103.57, c: '#10B981' }, { name: '雲起·迦境民宿', lat: 32.75, lng: 103.57, c: '#0D9488' }].forEach(function (s) {
+                    var m = new AMap.CircleMarker({ center: [s.lng, s.lat], radius: 7, strokeColor: '#fff', strokeWeight: 2, fillColor: s.c, fillOpacity: .95, zIndex: 10, cursor: 'pointer' }); m.setMap(map);
                     m.on('click', function () { new AMap.InfoWindow({ content: '<div style="padding:6px 10px;font-size:13px;font-weight:700;">' + s.name + '</div>', offset: new AMap.Pixel(0, -10) }).open(map, m.getCenter()) });
                 });
             } catch (e) { document.getElementById('map').innerHTML = '<div style="height:200px;display:flex;align-items:center;justify-content:center;background:#F3F4F6;border-radius:16px;color:#6B7280;">地圖載入中...</div>' }

@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>Day 1 · 抵達成都 · 市區初體驗｜成都旅遊 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <title>Day 7 · 熊貓谷 · 都江堰｜成都旅遊 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <script>window._AMapSecurityConfig = { securityJsCode: '6906803561bf037e99aa8ceb1de31bee' };</script>
     <script
-        src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.Driving,AMap.Walking,AMap.InfoWindow"></script>
+        src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.InfoWindow"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -19,7 +18,7 @@
         }
 
         :root {
-            --amber: #F59E0B;
+            --c: #F97316;
             --navy: #1E3A5F;
             --cream: #FFF8F0;
             --card: #fff;
@@ -37,7 +36,6 @@
             padding-bottom: 30px
         }
 
-        /* 頂部列 */
         .top {
             position: sticky;
             top: 0;
@@ -74,11 +72,10 @@
             color: var(--sub)
         }
 
-        /* 日橫幅 */
         .banner {
             position: relative;
             height: 180px;
-            background: url('https://images.unsplash.com/photo-1600111893479-a4c9e2b3d6d0?w=800&q=80') center/cover;
+            background: url('https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&q=80') center/cover;
             display: flex;
             align-items: flex-end;
             padding: 16px;
@@ -89,7 +86,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(245, 158, 11, .85), rgba(245, 158, 11, .2) 60%, transparent)
+            background: linear-gradient(to top, rgba(249, 115, 22, .85), rgba(249, 115, 22, .2) 60%, transparent)
         }
 
         .banner * {
@@ -118,7 +115,6 @@
             margin-top: 4px
         }
 
-        /* 區段 */
         .sec-head {
             padding: 20px 16px 8px;
             display: flex;
@@ -138,7 +134,6 @@
             flex-shrink: 0
         }
 
-        /* 時間軸 */
         .timeline {
             padding: 0 16px
         }
@@ -166,7 +161,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            border: 3px solid var(--amber);
+            border: 3px solid var(--c);
             background: #fff;
             flex-shrink: 0;
             z-index: 1
@@ -185,12 +180,12 @@
             border-radius: 12px;
             box-shadow: var(--shadow);
             padding: 12px;
-            border-left: 3px solid var(--amber)
+            border-left: 3px solid var(--c)
         }
 
         .tl-time {
             font-size: 11px;
-            color: var(--amber);
+            color: var(--c);
             font-weight: 700;
             margin-bottom: 4px
         }
@@ -215,15 +210,14 @@
         }
 
         .tl-tag {
-            background: #FEF3C7;
-            color: #92400E;
+            background: #FFEDD5;
+            color: #9A3412;
             padding: 2px 8px;
             border-radius: 10px;
             font-size: 10px;
             font-weight: 600
         }
 
-        /* 住宿卡 */
         .hotel-card {
             margin: 0 16px;
             background: var(--card);
@@ -252,7 +246,6 @@
             margin-top: 2px
         }
 
-        /* 提示 */
         .tips {
             margin: 0 16px;
             background: #FFFBEB;
@@ -279,7 +272,6 @@
             flex-shrink: 0
         }
 
-        /* 地圖 */
         #map {
             width: calc(100% - 32px);
             height: 200px;
@@ -289,55 +281,59 @@
             box-shadow: var(--shadow)
         }
 
-        /* 下一天 */
-        .next-day {
-            margin: 16px;
-            text-align: center
+        .nav-btns {
+            display: flex;
+            gap: 10px;
+            padding: 16px;
+            justify-content: center
         }
 
-        .next-day a {
+        .nav-btns a {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: var(--amber);
-            color: #fff;
-            padding: 12px 24px;
+            gap: 6px;
+            padding: 12px 20px;
             border-radius: 24px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, .3);
+            font-size: 13px;
             transition: transform .15s
         }
 
-        .next-day a:active {
+        .nav-btns a:active {
             transform: scale(.96)
+        }
+
+        .btn-prev {
+            background: #F3F4F6;
+            color: var(--navy)
+        }
+
+        .btn-next {
+            background: var(--c);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, .3)
         }
     </style>
 </head>
 
 <body>
-    <!-- 頂部導覽 -->
-    <div class="top">
-        <a class="back" href="index.html">←</a>
+    <div class="top"><a class="back" href="index.html">←</a>
         <div>
-            <div class="top-title">Day 1 · 抵達成都</div>
-            <div class="top-sub">5月16日（週五）</div>
+            <div class="top-title">Day 7 · 熊貓谷&都江堰</div>
+            <div class="top-sub">5月22日（週四）</div>
         </div>
     </div>
-
-    <!-- 日橫幅 -->
     <div class="banner">
-        <div class="banner-num">01</div>
+        <div class="banner-num">07</div>
         <div class="banner-info">
-            <div class="theme">抵達成都 · 市區初體驗 🏙️</div>
-            <div class="meta">5月16日（週五）· 春熙路 / 太古里</div>
+            <div class="theme">熊貓谷 · 都江堰水利奇蹟 🐼</div>
+            <div class="meta">5月22日（週四）· 都江堰市一日遊</div>
         </div>
     </div>
 
-    <!-- 行程時間軸 -->
     <div class="sec-head">
-        <div class="dot" style="background:var(--amber)"></div>
+        <div class="dot" style="background:var(--c)"></div>
         <h2>📍 今日行程</h2>
     </div>
     <div class="timeline">
@@ -347,124 +343,110 @@
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">✈️ 12:40</div>
-                <div class="tl-title">抵達天府國際機場</div>
-                <div class="tl-desc">國泰航空 CX986 經香港轉機抵達。取行李後前往地鐵站。</div>
-                <div class="tl-tags"><span class="tl-tag">✈️ 航班抵達</span><span class="tl-tag">T2航廈</span></div>
+                <div class="tl-time">🚄 07:30 – 08:30</div>
+                <div class="tl-title">城際高鐵/包車 → 都江堰</div>
+                <div class="tl-desc">從成都搭城際高鐵到都江堰站（約30分鐘），或包車前往（約1小時）。都江堰是成都近郊最值得的一日遊目的地！</div>
+                <div class="tl-tags"><span class="tl-tag">🚄 高鐵</span><span class="tl-tag">⏱ ~30min</span></div>
             </div>
         </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">🚇 13:00 – 15:30</div>
-                <div class="tl-title">搭乘地鐵 18 號線至市區</div>
-                <div class="tl-desc">天府機場 → 地鐵18號線 → 轉乘至春熙路站。車程約1.5~2小時，票價約10元人民幣。</div>
-                <div class="tl-tags"><span class="tl-tag">🚇 地鐵</span><span class="tl-tag">18號線</span></div>
+                <div class="tl-time">🐼 09:00 – 12:00</div>
+                <div class="tl-title">都江堰大熊貓繁育野放研究中心（熊貓谷）</div>
+                <div class="tl-desc">
+                    比市區的熊貓基地人少很多，環境更貼近自然！這裡專門做大熊貓野化訓練，可以看到在半野化環境中生活的大熊貓。還有超可愛的「小熊貓」（紅熊貓）散養區，牠們會在路邊走來走去，近距離互動！</div>
+                <div class="tl-tags"><span class="tl-tag">🐼 熊貓谷</span><span class="tl-tag">🦊 小熊貓</span><span
+                        class="tl-tag">📸 近距離</span><span class="tl-tag">👥 人少</span></div>
             </div>
         </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">🏨 16:00</div>
-                <div class="tl-title">飯店 Check-in</div>
-                <div class="tl-desc">春熙路國際金融中心亞朵酒店。放下行李，整理一下，準備出發探索！</div>
-                <div class="tl-tags"><span class="tl-tag">🏨 入住</span><span class="tl-tag">春熙路商圈</span></div>
+                <div class="tl-time">🍜 12:00 – 13:00</div>
+                <div class="tl-title">午餐 · 都江堰當地美食</div>
+                <div class="tl-desc">在都江堰市區用午餐。推薦試試當地特色的「鍋魁」（厚燒餅夾肉）和蹄花湯——軟爛入味的豬蹄膠原蛋白超滿！</div>
+                <div class="tl-tags"><span class="tl-tag">🍜 鍋魁</span><span class="tl-tag">🍲 蹄花湯</span></div>
             </div>
         </div>
+
         <div class="tl-item">
             <div class="tl-line">
                 <div class="tl-dot"></div>
                 <div class="tl-bar"></div>
             </div>
             <div class="tl-card">
-                <div class="tl-time">📸 16:30 – 17:30</div>
-                <div class="tl-title">IFS 國際金融中心「爬牆熊貓」</div>
-                <div class="tl-desc">成都最紅打卡地標！7樓露台有巨型攀爬大熊貓雕塑，從不同角度拍照效果超好。頂層還能俯瞰整座春熙路商圈。</div>
-                <div class="tl-tags"><span class="tl-tag">📸 必拍打卡</span><span class="tl-tag">🐼 地標</span></div>
-            </div>
-        </div>
-        <div class="tl-item">
-            <div class="tl-line">
-                <div class="tl-dot"></div>
-                <div class="tl-bar"></div>
-            </div>
-            <div class="tl-card">
-                <div class="tl-time">🚶 17:30 – 19:00</div>
-                <div class="tl-title">漫步太古里</div>
-                <div class="tl-desc">成都最時尚的開放式商業街區，中西融合建築風格。旁邊就是千年古寺「大慈寺」，古今交融超有氛圍感。</div>
-                <div class="tl-tags"><span class="tl-tag">🛍️ 購物</span><span class="tl-tag">⛩️ 大慈寺</span><span
-                        class="tl-tag">📸 拍照</span></div>
-            </div>
-        </div>
-        <div class="tl-item">
-            <div class="tl-line">
-                <div class="tl-dot"></div>
-            </div>
-            <div class="tl-card">
-                <div class="tl-time">🍲 19:00 – 21:00</div>
-                <div class="tl-title">道地四川麻辣火鍋 🌶️</div>
-                <div class="tl-desc">來成都第一件事——吃火鍋！推薦「小龍坎」或「蜀大俠」。建議點鴛鴦鍋（辣鍋+清湯鍋），必點毛肚、鵝腸、黃喉。也可以試試「串串香」，一根一根串著涮，更有成都街頭感。
+                <div class="tl-time">🌊 13:30 – 16:30</div>
+                <div class="tl-title">都江堰水利工程 · 世界文化遺產</div>
+                <div class="tl-desc">
+                    2300年前李冰父子建造的水利工程，至今仍在運作！三大核心：「魚嘴」將岷江分為內外兩江、「飛沙堰」排除泥沙、「寶瓶口」控制水量灌溉成都平原。站在安瀾索橋上搖搖晃晃，腳下就是奔騰的岷江水，刺激又壯觀！
                 </div>
-                <div class="tl-tags"><span class="tl-tag">🌶️ 火鍋</span><span class="tl-tag">🍢 串串香</span><span
-                        class="tl-tag">🔥 必吃</span></div>
+                <div class="tl-tags"><span class="tl-tag">🌊 魚嘴</span><span class="tl-tag">⚡ 飛沙堰</span><span
+                        class="tl-tag">🏛️ 寶瓶口</span><span class="tl-tag">🌉 安瀾索橋</span></div>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">🌉 17:00 – 20:00</div>
+                <div class="tl-title">南橋夜景「藍眼淚」🔵</div>
+                <div class="tl-desc">
+                    傍晚一定要走到都江堰旁的「南橋」！這座雕樑畫棟的廊橋本身就很美，但最神奇的是——夜晚橋下的江水在燈光映照下會變成夢幻的藍色，被當地人稱為「藍眼淚」。超適合拍照！吃個宵夜再搭高鐵回成都。</div>
+                <div class="tl-tags"><span class="tl-tag">🌉 南橋</span><span class="tl-tag">🔵 藍眼淚</span><span
+                        class="tl-tag">📸 夜景必拍</span><span class="tl-tag">🍢 宵夜</span></div>
             </div>
         </div>
     </div>
 
-    <!-- 住宿資訊 -->
     <div class="sec-head">
         <div class="dot" style="background:#0D9488"></div>
         <h2>🏨 今晚住宿</h2>
     </div>
     <div class="hotel-card">
-        <div class="icon">🌆</div>
+        <div class="icon">🎨</div>
         <div>
-            <div class="name">春熙路國際金融中心亞朵酒店</div>
-            <div class="desc">📍 春熙路/太古里商圈核心位置<br>🛏️ 第 1 晚（共住 2 晚）<br>💡 出門即太古里、IFS，逛街吃火鍋超方便</div>
+            <div class="name">凱特麗亞創意主題飯店公寓（春熙太古里店）</div>
+            <div class="desc">📍 同Day 6（第2晚）<br>💡 明天去三星堆博物館！記得提前買票。</div>
         </div>
     </div>
 
-    <!-- 地圖 -->
     <div class="sec-head">
         <div class="dot" style="background:#3B82F6"></div>
         <h2>🗺️ 景點地圖</h2>
     </div>
     <div id="map"></div>
 
-    <!-- 提示 -->
     <div class="sec-head">
         <div class="dot" style="background:#F87171"></div>
         <h2>💡 今日提醒</h2>
     </div>
     <div class="tips">
-        <div class="tip"><span class="tip-ic">📱</span><span>抵達後先買中國 SIM 卡或開通漫遊，下載支付寶/微信支付（大陸幾乎不用現金）。</span></div>
-        <div class="tip"><span class="tip-ic">🚇</span><span>地鐵18號線可直達市區，但高峰期需25分鐘一班，建議備好離線地圖。</span></div>
-        <div class="tip"><span class="tip-ic">🌶️</span><span>火鍋如果怕辣，一定要點鴛鴦鍋！「微辣」在四川已經是很辣了。</span></div>
-        <div class="tip"><span class="tip-ic">💰</span><span>建議備帶少量人民幣現金（約500元），部分地鐵售票機和小攤需要現金。</span></div>
+        <div class="tip"><span class="tip-ic">🎫</span><span>明天的三星堆博物館門票非常搶手！請立即確認是否已預訂。微信小程序或攜程/Trip.com。</span></div>
+        <div class="tip"><span class="tip-ic">🐼</span><span>熊貓谷建議早上去，大熊貓上午活動力最強、最愛吃竹子，下午常常在睡覺。</span></div>
+        <div class="tip"><span class="tip-ic">🌉</span><span>南橋「藍眼淚」最佳觀賞時間是天剛黑後的30分鐘（約19:30-20:00），太晚反而效果沒那麼好。</span>
+        </div>
     </div>
 
-    <!-- 下一天 -->
-    <div class="next-day"><a href="day2.html">Day 2 · 黃龍溪古鎮 →</a></div>
+    <div class="nav-btns"><a class="btn-prev" href="day6.html">← Day 6</a><a class="btn-next" href="day8.html">Day 8 ·
+            三星堆 →</a></div>
 
     <script>
         window.onload = function () {
             try {
-                var map = new AMap.Map('map', { zoom: 14, center: [104.0810, 30.6560], mapStyle: 'amap://styles/whitesmoke', resizeEnable: true });
-                var spots = [
-                    { name: '天府國際機場', lat: 30.3135, lng: 104.4451, c: '#F59E0B' },
-                    { name: 'IFS 爬牆熊貓', lat: 30.6558, lng: 104.0793, c: '#F59E0B' },
-                    { name: '太古里', lat: 30.6547, lng: 104.0820, c: '#F59E0B' },
-                    { name: '亞朵酒店(春熙路)', lat: 30.6574, lng: 104.0810, c: '#0D9488' },
-                ];
-                spots.forEach(function (s) {
-                    var m = new AMap.CircleMarker({ center: [s.lng, s.lat], radius: 7, strokeColor: '#fff', strokeWeight: 2, fillColor: s.c, fillOpacity: .95, zIndex: 10, cursor: 'pointer' });
-                    m.setMap(map);
+                var map = new AMap.Map('map', { zoom: 11, center: [103.65, 31.0], mapStyle: 'amap://styles/whitesmoke', resizeEnable: true });
+                [{ name: '熊貓谷(野放中心)', lat: 31.02, lng: 103.58, c: '#F97316' }, { name: '都江堰水利工程', lat: 31.00, lng: 103.61, c: '#F97316' }, { name: '南橋', lat: 30.99, lng: 103.63, c: '#EC4899' }].forEach(function (s) {
+                    var m = new AMap.CircleMarker({ center: [s.lng, s.lat], radius: 7, strokeColor: '#fff', strokeWeight: 2, fillColor: s.c, fillOpacity: .95, zIndex: 10, cursor: 'pointer' }); m.setMap(map);
                     m.on('click', function () { new AMap.InfoWindow({ content: '<div style="padding:6px 10px;font-size:13px;font-weight:700;">' + s.name + '</div>', offset: new AMap.Pixel(0, -10) }).open(map, m.getCenter()) });
                 });
             } catch (e) { document.getElementById('map').innerHTML = '<div style="height:200px;display:flex;align-items:center;justify-content:center;background:#F3F4F6;border-radius:16px;color:#6B7280;">地圖載入中...</div>' }

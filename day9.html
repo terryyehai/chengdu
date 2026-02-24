@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Day 9 · 告別成都 · 返回溫暖的家｜成都旅遊 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --c: #EF4444;
+            --navy: #1E3A5F;
+            --cream: #FFF8F0;
+            --card: #fff;
+            --sub: #6B7280;
+            --r: 16px;
+            --shadow: 0 4px 16px rgba(0, 0, 0, .08)
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            max-width: 430px;
+            margin: 0 auto;
+            padding-bottom: 30px
+        }
+
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, .06)
+        }
+
+        .back {
+            text-decoration: none;
+            font-size: 20px;
+            color: var(--navy);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: #F3F4F6
+        }
+
+        .top-title {
+            font-size: 16px;
+            font-weight: 700
+        }
+
+        .top-sub {
+            font-size: 11px;
+            color: var(--sub)
+        }
+
+        .banner {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(135deg, #1E3A5F, #3B82F6);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            overflow: hidden
+        }
+
+        .banner * {
+            position: relative;
+            color: #fff
+        }
+
+        .banner-num {
+            font-size: 48px;
+            font-weight: 800;
+            opacity: .2;
+            position: absolute;
+            top: 12px;
+            right: 16px
+        }
+
+        .banner-plane {
+            font-size: 60px;
+            opacity: .15;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-15deg)
+        }
+
+        .banner-info .theme {
+            font-size: 22px;
+            font-weight: 800
+        }
+
+        .banner-info .meta {
+            font-size: 12px;
+            opacity: .9;
+            margin-top: 4px
+        }
+
+        .sec-head {
+            padding: 20px 16px 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .sec-head h2 {
+            font-size: 16px;
+            font-weight: 800
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0
+        }
+
+        .timeline {
+            padding: 0 16px
+        }
+
+        .tl-item {
+            display: flex;
+            gap: 12px;
+            padding-bottom: 20px
+        }
+
+        .tl-item:last-child {
+            padding-bottom: 0
+        }
+
+        .tl-line {
+            width: 28px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .tl-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 3px solid var(--c);
+            background: #fff;
+            flex-shrink: 0;
+            z-index: 1
+        }
+
+        .tl-bar {
+            flex: 1;
+            width: 2px;
+            background: #E5E7EB;
+            margin-top: 4px
+        }
+
+        .tl-card {
+            flex: 1;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 12px;
+            border-left: 3px solid var(--c)
+        }
+
+        .tl-time {
+            font-size: 11px;
+            color: var(--c);
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .tl-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .tl-desc {
+            font-size: 12px;
+            color: var(--sub);
+            line-height: 1.6
+        }
+
+        .tl-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 6px
+        }
+
+        .tl-tag {
+            background: #FEE2E2;
+            color: #991B1B;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600
+        }
+
+        .tips {
+            margin: 0 16px;
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+            border-radius: var(--r);
+            padding: 12px
+        }
+
+        .tip {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: #92400E;
+            line-height: 1.5
+        }
+
+        .tip:last-child {
+            margin-bottom: 0
+        }
+
+        .tip-ic {
+            font-size: 16px;
+            flex-shrink: 0
+        }
+
+        .farewell {
+            margin: 16px;
+            text-align: center;
+            padding: 24px;
+            background: linear-gradient(135deg, #FEF3C7, #FBBF24);
+            border-radius: var(--r);
+            box-shadow: var(--shadow)
+        }
+
+        .farewell .emoji {
+            font-size: 48px;
+            margin-bottom: 8px
+        }
+
+        .farewell h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 6px
+        }
+
+        .farewell p {
+            font-size: 13px;
+            color: #78350F;
+            line-height: 1.6
+        }
+
+        .nav-btns {
+            display: flex;
+            gap: 10px;
+            padding: 16px;
+            justify-content: center
+        }
+
+        .nav-btns a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 20px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: transform .15s
+        }
+
+        .nav-btns a:active {
+            transform: scale(.96)
+        }
+
+        .btn-prev {
+            background: #F3F4F6;
+            color: var(--navy)
+        }
+
+        .btn-home {
+            background: var(--navy);
+            color: #fff
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top"><a class="back" href="index.html">←</a>
+        <div>
+            <div class="top-title">Day 9 · 回家</div>
+            <div class="top-sub">5月24日（週六）</div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="banner-num">09</div>
+        <div class="banner-plane">✈️</div>
+        <div class="banner-info">
+            <div class="theme">告別成都 · 返回溫暖的家 ✈️</div>
+            <div class="meta">5月24日（週六）· 天府 → 香港 → 高雄</div>
+        </div>
+    </div>
+
+    <div class="sec-head">
+        <div class="dot" style="background:var(--c)"></div>
+        <h2>📍 今日行程</h2>
+    </div>
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+                <div class="tl-bar"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">⏰ 05:30</div>
+                <div class="tl-title">起床 & 準備出發</div>
+                <div class="tl-desc">最後檢查房間，確認沒有遺留物品。護照、手機、充電器、伴手禮都帶齊了嗎？</div>
+                <div class="tl-tags"><span class="tl-tag">⏰ 早起</span></div>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+                <div class="tl-bar"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">🚌 06:00</div>
+                <div class="tl-title">飯店接駁 → 天府機場航廈</div>
+                <div class="tl-desc">搭飯店接駁車前往天府國際機場T2航廈。辦理登機手續、過安檢。</div>
+                <div class="tl-tags"><span class="tl-tag">🚌 接駁</span><span class="tl-tag">T2航廈</span></div>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+                <div class="tl-bar"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">🛫 08:10 → 11:10</div>
+                <div class="tl-title">CX917 成都 → 香港</div>
+                <div class="tl-desc">國泰航空 CX917，飛行約3小時。告別成都，窗外最後再看一眼四川盆地和大山。</div>
+                <div class="tl-tags"><span class="tl-tag">✈️ CX917</span><span class="tl-tag">⏱ 3hr</span></div>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+                <div class="tl-bar"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">🛒 11:10 – 16:35</div>
+                <div class="tl-title">香港轉機 · 停留 5hr 25min</div>
+                <div class="tl-desc">在香港國際機場有充裕的轉機時間！可以好好逛免稅店——化妝品、巧克力、手錶、電子產品都比台灣便宜。別忘了吃個港式叉燒飯或雲吞麵當午餐！</div>
+                <div class="tl-tags"><span class="tl-tag">🛒 免稅店</span><span class="tl-tag">🍜 港式美食</span><span
+                        class="tl-tag">⏱ 5.5hr</span></div>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+                <div class="tl-bar"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">🛫 16:35 → 18:05</div>
+                <div class="tl-title">CX458 香港 → 高雄</div>
+                <div class="tl-desc">國泰航空 CX458，最後一段旅程，飛行約1.5小時。</div>
+                <div class="tl-tags"><span class="tl-tag">✈️ CX458</span><span class="tl-tag">⏱ 1.5hr</span></div>
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-line">
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-card">
+                <div class="tl-time">🏠 18:05</div>
+                <div class="tl-title">抵達高雄國際機場 · 回家！</div>
+                <div class="tl-desc">歡迎回家！9天8夜的成都深度之旅圓滿結束。帶著滿滿的回憶、照片和伴手禮，回到溫暖的家。辛苦了，好好休息！🎉</div>
+                <div class="tl-tags"><span class="tl-tag">🏠 到家了</span><span class="tl-tag">🎉 旅途完美</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sec-head">
+        <div class="dot" style="background:#F59E0B"></div>
+        <h2>💡 最後提醒</h2>
+    </div>
+    <div class="tips">
+        <div class="tip"><span class="tip-ic">🛃</span><span>香港轉機不需要港簽（持台灣護照可免簽入境香港7天）。</span></div>
+        <div class="tip"><span class="tip-ic">🛒</span><span>香港機場免稅店推薦：DFS、周大福、莎莎。液體類記得放託運。</span></div>
+        <div class="tip"><span class="tip-ic">📸</span><span>記得把手機照片備份到雲端！9天的美好回憶不能丟失。</span></div>
+    </div>
+
+    <div class="farewell">
+        <div class="emoji">🐼✈️🏠</div>
+        <h3>旅途愉快，一路平安！</h3>
+        <p>成都之旅，從九寨溝的碧水到黃龍的金池，從熊貓谷的萌獸到三星堆的神秘，每一天都是最美的風景。期待下次再見！🎋</p>
+    </div>
+
+    <div class="nav-btns"><a class="btn-prev" href="day8.html">← Day 8</a><a class="btn-home" href="index.html">🏠
+            回到首頁</a></div>
+</body>
+
+</html>
