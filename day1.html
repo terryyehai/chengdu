@@ -77,13 +77,26 @@
             font-weight: 500;
         }
 
-        /* ===== 日期主題橫幅 ===== */
+        /* Day 1 主題橫幅（真實照片背景：成都古街 + 琥珀漸層覆蓋） */
         .day-banner {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.82) 0%, rgba(217, 119, 6, 0.78) 100%),
+                url('https://images.unsplash.com/photo-1516496636080-14fb876e029d?w=900&q=80&auto=format') center center / cover no-repeat;
             padding: 18px 16px;
             display: flex;
             align-items: center;
             gap: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 角落竹子插圖裝飾 */
+        .day-banner::after {
+            content: '🎋';
+            position: absolute;
+            right: 12px;
+            bottom: 8px;
+            font-size: 42px;
+            opacity: 0.25;
         }
 
         .day-banner-num {
