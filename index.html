@@ -56,23 +56,23 @@
       position: relative;
       height: 60vw;
       max-height: 320px;
-      min-height: 220px;
-      /* 真實照片背景：成都錦江安順廊橋黃昏 */
-      background: url('https://images.unsplash.com/photo-1600111893479-a4c9e2b3d6d0?w=900&q=80&auto=format') center center / cover no-repeat;
-      background-color: #1E3A5F;
+      min-height: 240px;
+      /* 暖色漸層背景，搭配熊貓插圖 */
+      background: linear-gradient(135deg, #1E3A5F 0%, #2D5A88 40%, #F59E0B 100%);
       overflow: hidden;
       border-radius: 0 0 32px 32px;
     }
 
-    /* SVG 插圖裝飾層：縮到角落 */
+    /* 大型熊貓 SVG 插圖 */
     .hero-bg-svg {
       position: absolute;
-      bottom: -20px;
-      right: -10px;
-      width: 200px;
-      height: 180px;
-      opacity: 0.30;
+      bottom: -5px;
+      right: -5px;
+      width: 220px;
+      height: 220px;
+      opacity: 0.85;
       pointer-events: none;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
     }
 
     .hero-gradient {
@@ -596,22 +596,81 @@
 
   <!-- ===== 英雄橫幅（真實照片背景 + 文化插圖裝飾） ===== -->
   <div class="hero">
-    <!-- SVG 插圖裝飾：大熊貓剪影（右下角小裝飾） -->
-    <svg class="hero-bg-svg" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
-      <!-- 簡化大熊貓剪影 -->
-      <ellipse cx="100" cy="110" rx="50" ry="55" fill="#FFFFFF" opacity="0.8" />
-      <circle cx="70" cy="65" r="16" fill="#1F2937" opacity="0.7" />
-      <circle cx="130" cy="65" r="16" fill="#1F2937" opacity="0.7" />
-      <ellipse cx="100" cy="85" rx="38" ry="36" fill="#FFFFFF" opacity="0.85" />
-      <ellipse cx="86" cy="80" rx="10" ry="9" fill="#1F2937" opacity="0.8" />
-      <ellipse cx="114" cy="80" rx="10" ry="9" fill="#1F2937" opacity="0.8" />
-      <circle cx="87" cy="80" r="4" fill="#fff" />
-      <circle cx="115" cy="80" r="4" fill="#fff" />
-      <ellipse cx="100" cy="90" rx="6" ry="4" fill="#1F2937" opacity="0.7" />
-      <!-- 竹子 -->
-      <rect x="155" y="20" width="6" height="150" rx="3" fill="#34D399" opacity="0.5" />
-      <rect x="170" y="40" width="4" height="120" rx="2" fill="#6EE7B7" opacity="0.4" />
-      <ellipse cx="160" cy="50" rx="14" ry="5" transform="rotate(-25 160 50)" fill="#6EE7B7" opacity="0.6" />
+    <!-- 精緻大熊貓吃竹子插圖 -->
+    <svg class="hero-bg-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- 竹子背景 -->
+      <rect x="170" y="10" width="8" height="200" rx="4" fill="#34D399" opacity="0.6" />
+      <rect x="190" y="30" width="6" height="180" rx="3" fill="#6EE7B7" opacity="0.45" />
+      <rect x="155" y="50" width="5" height="160" rx="2.5" fill="#A7F3D0" opacity="0.35" />
+      <!-- 竹葉 -->
+      <ellipse cx="178" cy="40" rx="18" ry="5" transform="rotate(-30 178 40)" fill="#34D399" opacity="0.55" />
+      <ellipse cx="195" cy="65" rx="15" ry="4" transform="rotate(20 195 65)" fill="#6EE7B7" opacity="0.5" />
+      <ellipse cx="162" cy="85" rx="14" ry="4" transform="rotate(-20 162 85)" fill="#34D399" opacity="0.45" />
+      <ellipse cx="180" cy="100" rx="16" ry="4.5" transform="rotate(15 180 100)" fill="#A7F3D0" opacity="0.4" />
+      <!-- 飄落竹葉 -->
+      <ellipse cx="35" cy="30" rx="10" ry="3" transform="rotate(-45 35 30)" fill="#6EE7B7" opacity="0.3" />
+      <ellipse cx="60" cy="55" rx="8" ry="2.5" transform="rotate(30 60 55)" fill="#34D399" opacity="0.25" />
+      <!-- 中式祥雲 -->
+      <g opacity="0.2" fill="#FDE68A">
+        <circle cx="25" cy="60" r="6" />
+        <circle cx="33" cy="58" r="7" />
+        <circle cx="41" cy="60" r="6" />
+        <circle cx="140" cy="25" r="5" />
+        <circle cx="147" cy="23" r="6" />
+        <circle cx="154" cy="25" r="5" />
+      </g>
+      <!-- 熊貓身體（白色主體） -->
+      <ellipse cx="90" cy="145" rx="55" ry="58" fill="#FFFFFF" />
+      <!-- 左前臂 -->
+      <ellipse cx="52" cy="130" rx="18" ry="25" transform="rotate(15 52 130)" fill="#2D3748" />
+      <!-- 右前臂（抱竹子） -->
+      <ellipse cx="128" cy="125" rx="17" ry="24" transform="rotate(-15 128 125)" fill="#2D3748" />
+      <!-- 左後腿 -->
+      <ellipse cx="60" cy="180" rx="22" ry="16" transform="rotate(10 60 180)" fill="#2D3748" />
+      <!-- 右後腿 -->
+      <ellipse cx="118" cy="182" rx="22" ry="16" transform="rotate(-10 118 182)" fill="#2D3748" />
+      <!-- 肉球（腳掌） -->
+      <ellipse cx="55" cy="192" rx="10" ry="7" fill="#4A5568" />
+      <circle cx="50" cy="188" r="3" fill="#F9A8D4" opacity="0.7" />
+      <circle cx="60" cy="188" r="3" fill="#F9A8D4" opacity="0.7" />
+      <ellipse cx="125" cy="194" rx="10" ry="7" fill="#4A5568" />
+      <circle cx="120" cy="190" r="3" fill="#F9A8D4" opacity="0.7" />
+      <circle cx="130" cy="190" r="3" fill="#F9A8D4" opacity="0.7" />
+      <!-- 白色肚皮光澤 -->
+      <ellipse cx="88" cy="150" rx="32" ry="35" fill="#F7FAFC" opacity="0.5" />
+      <!-- 頭部 -->
+      <circle cx="90" cy="90" r="42" fill="#FFFFFF" />
+      <!-- 左耳 -->
+      <circle cx="58" cy="58" r="16" fill="#2D3748" />
+      <circle cx="58" cy="58" r="9" fill="#4A5568" />
+      <!-- 右耳 -->
+      <circle cx="122" cy="58" r="16" fill="#2D3748" />
+      <circle cx="122" cy="58" r="9" fill="#4A5568" />
+      <!-- 眼圈（黑色橢圓） -->
+      <ellipse cx="74" cy="85" rx="14" ry="13" fill="#2D3748" transform="rotate(-8 74 85)" />
+      <ellipse cx="106" cy="85" rx="14" ry="13" fill="#2D3748" transform="rotate(8 106 85)" />
+      <!-- 眼白 -->
+      <ellipse cx="76" cy="84" rx="7" ry="8" fill="#FFFFFF" />
+      <ellipse cx="104" cy="84" rx="7" ry="8" fill="#FFFFFF" />
+      <!-- 眼珠 -->
+      <circle cx="78" cy="84" r="4.5" fill="#1A202C" />
+      <circle cx="102" cy="84" r="4.5" fill="#1A202C" />
+      <!-- 眼睛高光 -->
+      <circle cx="80" cy="82" r="2" fill="#FFFFFF" />
+      <circle cx="104" cy="82" r="2" fill="#FFFFFF" />
+      <!-- 鼻子 -->
+      <ellipse cx="90" cy="97" rx="6" ry="4.5" fill="#2D3748" />
+      <ellipse cx="90" cy="96" rx="3" ry="1.5" fill="#4A5568" opacity="0.5" />
+      <!-- 嘴巴（微笑） -->
+      <path d="M83 101 Q90 108 97 101" fill="none" stroke="#2D3748" stroke-width="1.5" stroke-linecap="round" />
+      <!-- 腮紅 -->
+      <circle cx="66" cy="95" r="7" fill="#F9A8D4" opacity="0.35" />
+      <circle cx="114" cy="95" r="7" fill="#F9A8D4" opacity="0.35" />
+      <!-- 手中的竹竿 -->
+      <rect x="108" y="70" width="5" height="80" rx="2.5" fill="#059669" transform="rotate(12 110 110)" />
+      <!-- 竹竿上的小葉 -->
+      <ellipse cx="118" cy="78" rx="10" ry="3.5" transform="rotate(-25 118 78)" fill="#10B981" />
+      <ellipse cx="105" cy="95" rx="8" ry="3" transform="rotate(20 105 95)" fill="#34D399" />
     </svg>
 
     <div class="hero-gradient"></div>
