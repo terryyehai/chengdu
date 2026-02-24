@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>Day 2 · 大熊貓之旅｜成都旅遊 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- 高德地圖安全密鑰 -->
+    <script>
+        window._AMapSecurityConfig = { securityJsCode: '6906803561bf037e99aa8ceb1de31bee' };
+    </script>
+    <!-- 高德地圖 JS API v2.0 -->
+    <script
+        src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.Driving,AMap.Walking,AMap.InfoWindow,AMap.TileLayer.Satellite"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --green: #10B981;
+            --green-dk: #059669;
+            --teal: #0D9488;
+            --navy: #1E3A5F;
+            --cream: #F0FDF4;
+            --card: #FFFFFF;
+            --sub: #6B7280;
+            --radius: 16px;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--cream);
+            color: var(--navy);
+            max-width: 430px;
+            margin: 0 auto;
+            padding-bottom: 90px;
+        }
+
+        /* 頂部導覽 */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(240, 253, 244, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .back-btn {
+            font-size: 22px;
+            text-decoration: none;
+            color: var(--navy);
+            margin-right: 10px;
+        }
+
+        .top-bar-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .top-bar-sub {
+            font-size: 11px;
+            color: var(--sub);
+        }
+
+        /* Day 2 主題橫幅（綠色竹林風格） */
+        .day-banner {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            padding: 18px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 竹子紋理裝飾 */
+        .day-banner::before {
+            content: '🎋🎋🎋';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            opacity: 0.25;
+            letter-spacing: -8px;
+        }
+
+        .day-banner-num {
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.2);
+            line-height: 1;
+        }
+
+        .day-theme-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .day-meta-row {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 3px;
+        }
+
+        .day-stats-row {
+            display: flex;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .day-stat {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        /* 天氣卡（磨砂玻璃感） */
+        .weather-card {
+            background: linear-gradient(135deg, rgba(224, 242, 254, 0.9), rgba(209, 250, 229, 0.9));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 14px 16px 0;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .weather-main {
+            font-size: 40px;
+        }
+
+        .weather-desc {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .weather-detail {
+            font-size: 12px;
+            color: var(--sub);
+            margin-top: 2px;
+        }
+
+        .weather-extras {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .weather-extra {
+            font-size: 11px;
+            color: var(--sub);
+        }
+
+        /* 板塊標題 */
+        .section-header {
+            padding: 18px 16px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .section-header h2 {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        /* 文化分隔線 */
+        .culture-divider {
+            margin: 4px 16px 14px;
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-radius: 12px;
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #F59E0B;
+        }
+
+        .culture-divider .cd-icon {
+            font-size: 22px;
+        }
+
+        .culture-divider .cd-text {
+            font-size: 13px;
+            font-weight: 700;
+            color: #92400E;
+        }
+
+        .culture-divider .cd-sub {
+            font-size: 11px;
+            color: #B45309;
+            margin-top: 1px;
+        }
+
+        /* 時間軸 */
+        .timeline {
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 36px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #A7F3D0, #10B981, #A7F3D0);
+            opacity: 0.5;
+        }
+
+        .stop-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 14px;
+            overflow: hidden;
+        }
+
+        .stop-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px 8px;
+        }
+
+        .time-badge {
+            background: var(--green);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .stop-name-zh {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 1px;
+        }
+
+        .stop-name-en {
+            font-size: 11px;
+            color: var(--sub);
+        }
+
+        .stop-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .stop-body {
+            padding: 10px 14px 12px;
+        }
+
+        .stop-desc {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .stop-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .tag {
+            background: #F3F4F6;
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 11px;
+            color: var(--sub);
+            font-weight: 500;
+        }
+
+        .tag.green {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .tag.red {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .transport-connector {
+            background: #F9FAFB;
+            border-top: 1px solid #F3F4F6;
+            padding: 8px 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--sub);
+            font-weight: 500;
+        }
+
+        .tc-arrow {
+            margin-left: auto;
+            font-size: 18px;
+            color: #D1D5DB;
+        }
+
+        /* 三星堆延伸推薦卡（金框） */
+        .sanxingdui-card {
+            margin: 4px 16px 14px;
+            border: 2px solid #D97706;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+            padding: 14px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .sxd-icon {
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+
+        .sxd-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #92400E;
+            margin-bottom: 4px;
+        }
+
+        .sxd-desc {
+            font-size: 12px;
+            color: #B45309;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .sxd-btn {
+            display: inline-block;
+            background: #D97706;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        /* 地圖 */
+        .map-section {
+            padding: 0 16px;
+        }
+
+        #amap-day2 {
+            width: 100%;
+            height: 260px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-controls {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .map-ctrl-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .map-ctrl-btn.primary {
+            background: var(--green);
+            color: #fff;
+        }
+
+        .map-ctrl-btn.secondary {
+            background: var(--card);
+            color: var(--navy);
+            box-shadow: var(--shadow);
+        }
+
+        /* 注意事項 */
+        .notes-card {
+            background: #FFFBEB;
+            border: 1px solid #FDE68A;
+            border-radius: var(--radius);
+            margin: 0 16px;
+            padding: 14px;
+        }
+
+        .note-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #92400E;
+            line-height: 1.5;
+        }
+
+        .note-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 底部導覽 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 430px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 20px;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            flex: 1;
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            font-size: 22px;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--sub);
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--green);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頂部導覽 -->
+    <div class="top-bar">
+        <a class="back-btn" href="index.html">←</a>
+        <div>
+            <div class="top-bar-title">Day 2 · 大熊貓之旅</div>
+            <div class="top-bar-sub">3月16日（週日）</div>
+        </div>
+    </div>
+
+    <!-- 主題橫幅 -->
+    <div class="day-banner">
+        <div class="day-banner-num">02</div>
+        <div class="day-banner-info">
+            <div class="day-theme-title">大熊貓 · 文化聖地 🐼</div>
+            <div class="day-meta-row">3月16日（週日）· 成都北區 + 武侯片區</div>
+            <div class="day-stats-row">
+                <span class="day-stat">📍 5個景點</span>
+                <span class="day-stat">🚗 ~35km</span>
+                <span class="day-stat">⏱ 約12小時</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 天氣卡 -->
+    <div class="weather-card">
+        <div class="weather-main">☀️</div>
+        <div>
+            <div class="weather-desc">晴 · 出行絕佳</div>
+            <div class="weather-detail">20°C / 13°C · 濕度 65%</div>
+            <div class="weather-extras">
+                <span class="weather-extra">💨 西北風 12km/h</span>
+                <span class="weather-extra">🕶️ UV 指數：中度</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 時間軸行程 ===== -->
+    <div class="section-header">
+        <div class="section-dot"></div>
+        <h2>今日行程</h2>
+    </div>
+
+    <div class="timeline">
+
+        <!-- 景點 1：熊貓基地 -->
+        <div class="stop-card">
+            <div class="stop-header">
+                <span class="time-badge">08:00</span>
+                <div>
+                    <div class="stop-name-zh">🐼 成都大熊貓繁育研究基地</div>
+                    <div class="stop-name-en">Chengdu Research Base of Giant Panda Breeding</div>
+                </div>
+            </div>
+            <div class="stop-photo-placeholder" style="background:linear-gradient(135deg,#D1FAE5,#A7F3D0);">🐼</div>
+            <div class="stop-body">
+                <p class="stop-desc">全球最重要的大熊貓保護與研究機構，現有超過 200 隻熊貓。<strong>建議 08:00
+                        開門即入場</strong>——早晨是熊貓最活躍的進食時段，可近距離觀賞熊貓進食、玩耍。下午熊貓多在午睡，活動量大幅減少。</p>
+                <div class="stop-tags">
+                    <span class="tag">🎫 門票 ¥55</span>
+                    <span class="tag">⏱ 建議 3小時</span>
+                    <span class="tag green">🌟 必去景點</span>
+                    <span class="tag">🚕 到場需 40分鐘</span>
+                </div>
+            </div>
+            <div class="transport-connector">
+                <span>🚕</span>
+                <span>滴滴打車 · 約25分鐘 往武侯祠方向</span>
+                <span class="tc-arrow">↓</span>
+            </div>
+        </div>
+
+        <!-- 午餐 -->
+        <div class="stop-card">
+            <div class="stop-header">
+                <span class="time-badge">12:00</span>
+                <div>
+                    <div class="stop-name-zh">🍜 龍抄手美食廣場</div>
+                    <div class="stop-name-en">Longchaoshou Traditional Sichuan Cuisine</div>
+                </div>
+            </div>
+            <div class="stop-photo-placeholder" style="background:linear-gradient(135deg,#FEE2E2,#FECACA);">🍲</div>
+            <div class="stop-body">
+                <p class="stop-desc">品嚐成都最道地的川菜午餐。推薦：龍抄手（招牌餛飩）、夫妻肺片、擔擔麵、紅糖糍粑。口味偏重麻辣，不敢吃辣可告知店家少辣。</p>
+                <div class="stop-tags">
+                    <span class="tag">🍜 川菜</span>
+                    <span class="tag">💰 人均 ¥60</span>
+                    <span class="tag">⏱ 1小時</span>
+                </div>
+            </div>
+            <div class="transport-connector">
+                <span>🚇</span>
+                <span>地鐵 3號線 · 約20分鐘</span>
+                <span class="tc-arrow">↓</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 文化朝聖分隔線 -->
+    <div class="culture-divider">
+        <span class="cd-icon">🎭</span>
+        <div>
+            <div class="cd-text">文化朝聖 · 三國與巴蜀</div>
+            <div class="cd-sub">進入成都歷史人文核心地帶</div>
+        </div>
+    </div>
+
+    <div class="timeline">
+
+        <!-- 景點 3：武侯祠 -->
+        <div class="stop-card">
+            <div class="stop-header">
+                <span class="time-badge">14:00</span>
+                <div>
+                    <div class="stop-name-zh">🏛️ 武侯祠</div>
+                    <div class="stop-name-en">Wuhou Temple (Three Kingdoms Museum)</div>
+                </div>
+            </div>
+            <div class="stop-photo-placeholder" style="background:linear-gradient(135deg,#FEF3C7,#FDE68A);">🏯</div>
+            <div class="stop-body">
+                <p class="stop-desc">中國唯一的君臣合祀廟宇，紀念蜀漢丞相諸葛亮（孔明）。館內陳列三國文物，氣氛莊嚴。旁邊就是錦里古街，可順道遊覽。
+                    <br />
+                    <em style="font-size:12px;color:#6B7280;">💡 川劇變臉表演：武侯祠附近的錦里古街不定時有街頭表演，請注意公告！</em>
+                </p>
+                <div class="stop-tags">
+                    <span class="tag">🎫 門票 ¥50</span>
+                    <span class="tag">⏱ 2小時</span>
+                    <span class="tag">🎭 川劇文化</span>
+                </div>
+            </div>
+            <div class="transport-connector">
+                <span>🚶</span>
+                <span>步行至錦里（東門） · 約2分鐘</span>
+                <span class="tc-arrow">↓</span>
+            </div>
+        </div>
+
+        <!-- 景點 4：錦里 -->
+        <div class="stop-card">
+            <div class="stop-header">
+                <span class="time-badge">16:30</span>
+                <div>
+                    <div class="stop-name-zh">🏮 錦里古街（傍晚）</div>
+                    <div class="stop-name-en">Jinli Ancient Street — Evening</div>
+                </div>
+            </div>
+            <div class="stop-photo-placeholder" style="background:linear-gradient(135deg,#FEF3C7,#FDE68A);">🏮</div>
+            <div class="stop-body">
+                <p class="stop-desc">傍晚燈籠點亮後，錦里古街瞬間變得夢幻。推薦逛一圈後找個小攤坐下來喝碗冰粉，感受巴蜀生活節奏。可在此消磨 1-2 小時，等待夜晚的火鍋饗宴。</p>
+                <div class="stop-tags">
+                    <span class="tag">🆓 免費入場</span>
+                    <span class="tag">🛍️ 紀念品</span>
+                    <span class="tag green">🎭 街頭表演</span>
+                </div>
+            </div>
+            <div class="transport-connector">
+                <span>🚕</span>
+                <span>滴滴打車 · 約8分鐘 至火鍋餐廳</span>
+                <span class="tc-arrow">↓</span>
+            </div>
+        </div>
+
+        <!-- 景點 5：火鍋 -->
+        <div class="stop-card">
+            <div class="stop-header">
+                <span class="time-badge">19:00</span>
+                <div>
+                    <div class="stop-name-zh">🌶️ 四川火鍋晚餐</div>
+                    <div class="stop-name-en">Sichuan Hot Pot Dinner</div>
+                </div>
+            </div>
+            <div class="stop-photo-placeholder" style="background:linear-gradient(135deg,#FEE2E2,#FECACA);">🍲</div>
+            <div class="stop-body">
+                <p class="stop-desc">
+                    成都最不能錯過的飲食體驗！推薦前往大龍燚或海底撈。成都火鍋以麻辣著稱，建議點「微辣」或「鴛鴦鍋」（一半辣、一半不辣）。<br />必點食材：毛肚、黃喉、腦花（進階）、冰粉（飯後甜點）。</p>
+                <div class="stop-tags">
+                    <span class="tag red">🌶️ 麻辣預警</span>
+                    <span class="tag">💰 人均 ¥100-150</span>
+                    <span class="tag">⏱ 2小時</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 三星堆延伸推薦 -->
+    <div class="sanxingdui-card">
+        <div class="sxd-icon">🏛️</div>
+        <div>
+            <div class="sxd-title">延伸推薦 · 三星堆博物館</div>
+            <div class="sxd-desc">距成都約 1.5 小時車程，體驗 4000 年前的神秘古蜀文明。震撼人心的青銅面具是世界考古奇蹟！</div>
+            <a class="sxd-btn" href="#">規劃加入 Day 4 →</a>
+        </div>
+    </div>
+
+    <!-- ===== 高德地圖：今日路線 ===== -->
+    <div class="section-header">
+        <div class="section-dot" style="background:var(--teal);"></div>
+        <h2>今日路線地圖</h2>
+    </div>
+    <div class="map-section">
+        <div id="amap-day2"></div>
+        <div class="map-controls">
+            <button class="map-ctrl-btn primary" onclick="showRoute()">🚗 顯示駕車路線</button>
+            <button class="map-ctrl-btn secondary" onclick="toggleSatellite()">🛰️ 衛星視圖</button>
+        </div>
+    </div>
+
+    <!-- 注意事項 -->
+    <div class="section-header">
+        <div class="section-dot" style="background:#EF4444;"></div>
+        <h2>⚠️ 今日注意事項</h2>
+    </div>
+    <div class="notes-card">
+        <div class="note-item">🐼 熊貓基地強烈建議 08:00 開門即入場，下午熊貓午睡，活動量大幅減少。</div>
+        <div class="note-item">🌶️ 火鍋辣度可調整，外國旅客建議從微辣開始，鴛鴦鍋是最保險選擇。</div>
+        <div class="note-item">📷 武侯祠內禁止商業攝影，自拍與旅遊拍照均可。</div>
+        <div class="note-item">💊 如腸胃較敏感，隨身攜帶消化藥物以備不時之需。</div>
+        <div class="note-item">📱 成都景區 99% 支援支付寶/微信支付，建議提前設定好。</div>
+    </div>
+
+    <div style="height:16px;"></div>
+
+    <!-- 底部導覽 -->
+    <nav class="bottom-nav">
+        <a class="nav-item" href="index.html">
+            <span class="nav-icon">🗺️</span>
+            <span class="nav-label">行程</span>
+        </a>
+        <a class="nav-item active" href="#amap-day2">
+            <span class="nav-icon">📍</span>
+            <span class="nav-label">地圖</span>
+        </a>
+        <a class="nav-item" href="day1.html">
+            <span class="nav-icon">◀</span>
+            <span class="nav-label">Day 1</span>
+        </a>
+        <a class="nav-item" href="#">
+            <span class="nav-icon">🌤️</span>
+            <span class="nav-label">天氣</span>
+        </a>
+        <a class="nav-item" href="#">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-label">設定</span>
+        </a>
+    </nav>
+
+    <!-- ===== 高德地圖腳本 ===== -->
+    <script>
+        // Day 2 五個景點（座標為 GCJ-02 高德坐標）
+        var day2Spots = [
+            { name: '① 熊貓繁育基地', lng: 104.1355, lat: 30.7322, desc: '08:00 · 必須早到！' },
+            { name: '② 龍抄手（午餐）', lng: 104.0700, lat: 30.6600, desc: '12:00 · 道地川菜午餐' },
+            { name: '③ 武侯祠', lng: 104.0474, lat: 30.6432, desc: '14:00 · 三國文化博物館' },
+            { name: '④ 錦里古街', lng: 104.0476, lat: 30.6431, desc: '16:30 · 古街 + 晚餐前' },
+            { name: '⑤ 火鍋晚餐', lng: 104.0500, lat: 30.6450, desc: '19:00 · 麻辣火鍋饗宴' },
+        ];
+
+        var map, isSatellite = false, satelliteLayer;
+
+        window.onload = function () {
+            map = new AMap.Map('amap-day2', {
+                zoom: 12,
+                center: [104.0900, 30.6900],   // 以成都北區（熊貓基地方向）為中心
+                mapStyle: 'amap://styles/fresh', // 清新地圖樣式
+                resizeEnable: true,
+            });
+
+            satelliteLayer = new AMap.TileLayer.Satellite({ opacity: 0 });
+            map.add(satelliteLayer);
+
+            var markers = [];
+            var lngLats = [];
+
+            day2Spots.forEach(function (spot, i) {
+                var lngLat = new AMap.LngLat(spot.lng, spot.lat);
+                lngLats.push(lngLat);
+
+                // 綠色編號標記
+                var marker = new AMap.Marker({
+                    position: lngLat,
+                    content: `<div style="
+            background:#10B981;color:#fff;
+            font-size:12px;font-weight:800;
+            width:26px;height:26px;border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            border:2px solid #fff;
+            box-shadow:0 2px 8px rgba(0,0,0,0.3);
+            font-family:sans-serif;
+          ">${i + 1}</div>`,
+                    offset: new AMap.Pixel(-13, -13),
+                    zIndex: 10 + i,
+                });
+
+                var infoWin = new AMap.InfoWindow({
+                    content: `<div style="padding:8px 12px;font-family:'Plus Jakarta Sans',sans-serif;min-width:160px;">
+            <div style="font-weight:800;font-size:14px;color:#1E3A5F;">${spot.name}</div>
+            <div style="font-size:12px;color:#6B7280;margin-top:2px;">${spot.desc}</div>
+          </div>`,
+                    offset: new AMap.Pixel(0, -30),
+                });
+
+                marker.on('click', function () {
+                    infoWin.open(map, marker.getPosition());
+                });
+
+                map.add(marker);
+                markers.push(marker);
+            });
+
+            // 路線折線（綠色虛線）
+            var polyline = new AMap.Polyline({
+                path: lngLats,
+                strokeColor: '#10B981',
+                strokeWeight: 3,
+                strokeStyle: 'dashed',
+                strokeDasharray: [8, 5],
+                lineJoin: 'round',
+            });
+            map.add(polyline);
+
+            map.setFitView(markers, false, [30, 30, 30, 30]);
+        };
+
+        // 駕車路線：熊貓基地 → 武侯祠
+        function showRoute() {
+            var driving = new AMap.Driving({
+                map: map,
+                policy: AMap.DrivingPolicy.LEAST_TIME,
+            });
+            driving.search(
+                new AMap.LngLat(104.1355, 30.7322),  // 熊貓基地
+                new AMap.LngLat(104.0474, 30.6432),  // 武侯祠
+                function (status, result) {
+                    if (status !== 'complete') {
+                        alert('路線規劃暫時無法取得，請確認網路連線');
+                    }
+                }
+            );
+        }
+
+        function toggleSatellite() {
+            isSatellite = !isSatellite;
+            satelliteLayer.setOpacity(isSatellite ? 1 : 0);
+        }
+    </script>
+</body>
+
+</html>

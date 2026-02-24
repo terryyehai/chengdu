@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>成都深度旅遊 2026｜旅途日記</title>
+  <meta name="description" content="2025年成都5天4夜深度旅遊行程，包含大熊貓、三星堆、峨眉山、樂山大佛等精彩景點。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- 高德地圖安全密鑰設定（必須在 SDK 載入前設定） -->
+  <script>
+    window._AMapSecurityConfig = {
+      securityJsCode: '6906803561bf037e99aa8ceb1de31bee'
+    };
+  </script>
+  <!-- 高德地圖 JS API v2.0，載入路線規劃、定位等插件 -->
+  <script
+    src="https://webapi.amap.com/maps?v=2.0&key=2ff5910e40cf633abbe738e78c4e4160&plugin=AMap.Driving,AMap.Walking,AMap.Geolocation,AMap.InfoWindow,AMap.MarkerCluster"></script>
+
+  <style>
+    /* ===== 全域設定 ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --amber: #F59E0B;
+      --amber-dk: #D97706;
+      --teal: #0D9488;
+      --navy: #1E3A5F;
+      --cream: #FFF8F0;
+      --card-bg: #FFFFFF;
+      --text-main: #1E3A5F;
+      --text-sub: #6B7280;
+      --radius: 16px;
+      --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-main);
+      max-width: 430px;
+      /* iPhone Pro Max 最大寬度 */
+      margin: 0 auto;
+      padding-bottom: 90px;
+      /* 底部導覽列高度 */
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ===== 英雄橫幅 ===== */
+    .hero {
+      position: relative;
+      height: 60vw;
+      max-height: 320px;
+      min-height: 220px;
+      background: linear-gradient(135deg, #0D9488 0%, #1E3A5F 40%, #2D1B69 100%);
+      overflow: hidden;
+      border-radius: 0 0 32px 32px;
+    }
+
+    /* 插圖背景：用 SVG 繪製大熊貓 + 竹子 + 文化元素 */
+    .hero-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.35;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30, 58, 95, 0.95) 0%, rgba(30, 58, 95, 0.3) 60%, transparent 100%);
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+    }
+
+    .hero-logo {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-date {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+    }
+
+    .badge.amber {
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    /* ===== 統計列 ===== */
+    .stats-bar {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 14px 16px 0;
+      padding: 14px 8px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-icon {
+      font-size: 18px;
+    }
+
+    .stat-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--text-sub);
+    }
+
+    /* ===== 通用板塊標題 ===== */
+    .section-header {
+      padding: 20px 16px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-header h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .section-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber);
+      flex-shrink: 0;
+    }
+
+    /* ===== 日期卡片 ===== */
+    .day-cards {
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .day-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+
+    .day-card:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 左側日數色條 */
+    .day-accent {
+      width: 54px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 14px 0;
+    }
+
+    .day-accent .day-num {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .day-accent .day-label {
+      font-size: 9px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .day-body {
+      flex: 1;
+      padding: 12px 12px 10px;
+    }
+
+    .day-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .day-date {
+      font-size: 11px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .day-theme {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 7px;
+    }
+
+    .attraction-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      background: #F3F4F6;
+      border-radius: 20px;
+      padding: 3px 8px;
+      font-size: 10px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .day-transport {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .day-arrow {
+      width: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-sub);
+      font-size: 16px;
+      padding-right: 4px;
+    }
+
+    /* 每天的左側色條顏色 */
+    .accent-d1 {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+    }
+
+    .accent-d2 {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    .accent-d3 {
+      background: linear-gradient(135deg, #3B82F6, #2563EB);
+    }
+
+    .accent-d4 {
+      background: linear-gradient(135deg, #8B5CF6, #6D28D9);
+    }
+
+    .accent-d5 {
+      background: linear-gradient(135deg, #EF4444, #DC2626);
+    }
+
+    /* ===== 高德地圖區塊 ===== */
+    .map-section {
+      padding: 0 16px;
+    }
+
+    #amap-overview {
+      width: 100%;
+      height: 220px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .map-btn {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      background: var(--amber);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .map-btn:active {
+      background: var(--amber-dk);
+    }
+
+    /* ===== 旅遊提示 ===== */
+    .tips-card {
+      margin: 0 16px;
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+
+    .tip-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .tip-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tip-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .tip-text {
+      font-size: 13px;
+      color: #92400E;
+      line-height: 1.5;
+    }
+
+    /* ===== 底部導覽列 ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0 20px;
+      /* 20px for home indicator */
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      flex: 1;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-icon {
+      font-size: 22px;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    .nav-item.active .nav-label {
+      color: var(--amber);
+    }
+
+    .nav-item.active .nav-icon {
+      filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.5));
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== 英雄橫幅（文化插圖背景） ===== -->
+  <div class="hero">
+    <!-- SVG 插圖背景：大熊貓 + 竹子 + 川劇面具 + 三星堆 -->
+    <svg class="hero-bg-svg" viewBox="0 0 390 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- 竹子桿 - 左側 -->
+      <rect x="20" y="0" width="8" height="280" rx="4" fill="#34D399" opacity="0.6" />
+      <rect x="36" y="20" width="5" height="240" rx="3" fill="#6EE7B7" opacity="0.4" />
+      <rect x="50" y="10" width="7" height="260" rx="3" fill="#34D399" opacity="0.5" />
+      <!-- 竹節 -->
+      <rect x="18" y="60" width="12" height="3" rx="1" fill="#059669" opacity="0.7" />
+      <rect x="18" y="120" width="12" height="3" rx="1" fill="#059669" opacity="0.7" />
+      <rect x="18" y="180" width="12" height="3" rx="1" fill="#059669" opacity="0.7" />
+      <!-- 竹葉 -->
+      <ellipse cx="30" cy="55" rx="18" ry="6" transform="rotate(-30 30 55)" fill="#6EE7B7" opacity="0.7" />
+      <ellipse cx="15" cy="115" rx="16" ry="5" transform="rotate(25 15 115)" fill="#34D399" opacity="0.6" />
+
+      <!-- 大熊貓身體（簡化卡通風格） - 右側 -->
+      <ellipse cx="300" cy="200" rx="55" ry="60" fill="#FFFFFF" opacity="0.9" />
+      <!-- 耳朵 -->
+      <circle cx="265" cy="155" r="18" fill="#1F2937" opacity="0.85" />
+      <circle cx="265" cy="155" r="10" fill="#FFFFFF" opacity="0.4" />
+      <circle cx="335" cy="155" r="18" fill="#1F2937" opacity="0.85" />
+      <circle cx="335" cy="155" r="10" fill="#FFFFFF" opacity="0.4" />
+      <!-- 頭部 -->
+      <ellipse cx="300" cy="175" rx="42" ry="40" fill="#FFFFFF" opacity="0.92" />
+      <!-- 眼睛 (黑眼圈) -->
+      <ellipse cx="284" cy="168" rx="12" ry="11" fill="#1F2937" opacity="0.9" />
+      <ellipse cx="316" cy="168" rx="12" ry="11" fill="#1F2937" opacity="0.9" />
+      <!-- 眼珠 -->
+      <circle cx="286" cy="168" r="5" fill="#fff" />
+      <circle cx="318" cy="168" r="5" fill="#fff" />
+      <circle cx="287" cy="168" r="3" fill="#111" />
+      <circle cx="319" cy="168" r="3" fill="#111" />
+      <!-- 反光點 -->
+      <circle cx="288" cy="166" r="1.5" fill="#fff" />
+      <circle cx="320" cy="166" r="1.5" fill="#fff" />
+      <!-- 鼻子 -->
+      <ellipse cx="300" cy="178" rx="7" ry="5" fill="#1F2937" opacity="0.8" />
+      <!-- 嘴巴 -->
+      <path d="M294 183 Q300 188 306 183" stroke="#1F2937" stroke-width="2" fill="none" opacity="0.7"
+        stroke-linecap="round" />
+      <!-- 身體四肢 -->
+      <ellipse cx="255" cy="235" rx="22" ry="15" fill="#1F2937" opacity="0.7" />
+      <ellipse cx="345" cy="235" rx="22" ry="15" fill="#1F2937" opacity="0.7" />
+      <!-- 竹子（熊貓手持） -->
+      <rect x="305" y="195" width="5" height="50" rx="2" fill="#34D399" opacity="0.8" />
+      <rect x="315" y="200" width="4" height="40" rx="2" fill="#6EE7B7" opacity="0.6" />
+
+      <!-- 川劇面具（右上角裝飾） -->
+      <g transform="translate(340, 30) rotate(15)">
+        <ellipse cx="20" cy="22" rx="18" ry="22" fill="#DC2626" opacity="0.85" />
+        <ellipse cx="14" cy="17" rx="5" ry="7" fill="#FEF3C7" opacity="0.9" />
+        <ellipse cx="26" cy="17" rx="5" ry="7" fill="#FEF3C7" opacity="0.9" />
+        <ellipse cx="14" cy="17" rx="3" ry="4" fill="#1F2937" opacity="0.8" />
+        <ellipse cx="26" cy="17" rx="3" ry="4" fill="#1F2937" opacity="0.8" />
+        <path d="M13 28 Q20 33 27 28" stroke="#FCD34D" stroke-width="2" fill="none" stroke-linecap="round" />
+        <path d="M4 10 Q20 -2 36 10" stroke="#FCD34D" stroke-width="1.5" fill="none" opacity="0.7" />
+      </g>
+
+      <!-- 三星堆面具輪廓（左下角） -->
+      <g transform="translate(60, 180) scale(0.6)" opacity="0.5">
+        <ellipse cx="50" cy="45" rx="38" ry="42" fill="none" stroke="#D97706" stroke-width="3" />
+        <!-- 凸眼 -->
+        <ellipse cx="32" cy="38" rx="12" ry="8" fill="none" stroke="#D97706" stroke-width="2.5" />
+        <ellipse cx="68" cy="38" rx="12" ry="8" fill="none" stroke="#D97706" stroke-width="2.5" />
+        <!-- 耳朵 -->
+        <path d="M12 35 Q0 45 12 55" stroke="#D97706" stroke-width="2.5" fill="none" />
+        <path d="M88 35 Q100 45 88 55" stroke="#D97706" stroke-width="2.5" fill="none" />
+        <!-- 嘴巴 -->
+        <path d="M28 62 Q50 72 72 62" stroke="#D97706" stroke-width="2.5" fill="none" />
+      </g>
+    </svg>
+
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-logo">🗺️ 旅途日記</div>
+      <h1 class="hero-title">成都深度旅遊</h1>
+      <p class="hero-date">2025 年 3月15日 — 3月19日</p>
+      <div class="hero-badges">
+        <span class="badge amber">🕐 5天4夜</span>
+        <span class="badge">✈️ 四川 成都</span>
+        <span class="badge">👥 2 人同行</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 旅程統計列 ===== -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-icon">📅</span>
+      <span class="stat-value">5天</span>
+      <span class="stat-label">行程天數</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">📍</span>
+      <span class="stat-value">18個</span>
+      <span class="stat-label">景點</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">🚗</span>
+      <span class="stat-value">~120km</span>
+      <span class="stat-label">總里程</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">💰</span>
+      <span class="stat-value">¥3000</span>
+      <span class="stat-label">預算/人</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">🌤️</span>
+      <span class="stat-value">晴為主</span>
+      <span class="stat-label">天氣</span>
+    </div>
+  </div>
+
+  <!-- ===== 每日行程卡片 ===== -->
+  <div class="section-header">
+    <div class="section-dot"></div>
+    <h2>行程總覽</h2>
+  </div>
+
+  <div class="day-cards">
+    <!-- Day 1 -->
+    <a class="day-card" href="day1.html">
+      <div class="day-accent accent-d1">
+        <span class="day-num">1</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">3月15日（週六）</span>
+        </div>
+        <div class="day-theme">初抵城市 · 市中心探索 🏙️</div>
+        <div class="attraction-tags">
+          <span class="tag">天府廣場</span>
+          <span class="tag">寬窄巷子</span>
+          <span class="tag">杜甫草堂</span>
+          <span class="tag">錦里古街</span>
+        </div>
+        <div class="day-transport">🚇 地鐵 &nbsp;🚕 計程車 &nbsp;🚶 步行</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </a>
+
+    <!-- Day 2 -->
+    <a class="day-card" href="day2.html">
+      <div class="day-accent accent-d2">
+        <span class="day-num">2</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">3月16日（週日）</span>
+        </div>
+        <div class="day-theme">大熊貓 · 文化聖地 🐼</div>
+        <div class="attraction-tags">
+          <span class="tag">熊貓繁育基地</span>
+          <span class="tag">武侯祠</span>
+          <span class="tag">錦里古街</span>
+          <span class="tag">四川火鍋</span>
+        </div>
+        <div class="day-transport">🚕 滴滴 &nbsp;🚇 地鐵 &nbsp;🚶 步行</div>
+      </div>
+      <div class="day-arrow">›</div>
+    </a>
+
+    <!-- Day 3（示意，待完善） -->
+    <div class="day-card" style="opacity:0.65; cursor:default;">
+      <div class="day-accent accent-d3">
+        <span class="day-num">3</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">3月17日（週一）</span>
+        </div>
+        <div class="day-theme">樂山大佛 · 峨眉山 ⛰️</div>
+        <div class="attraction-tags">
+          <span class="tag">樂山大佛</span>
+          <span class="tag">峨眉山牌坊</span>
+          <span class="tag">報國寺</span>
+        </div>
+        <div class="day-transport">🚌 高鐵 &nbsp;🚕 計程車</div>
+      </div>
+      <div class="day-arrow" style="font-size:12px;color:#9CA3AF;">規劃中</div>
+    </div>
+
+    <!-- Day 4 -->
+    <div class="day-card" style="opacity:0.65; cursor:default;">
+      <div class="day-accent accent-d4">
+        <span class="day-num">4</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">3月18日（週二）</span>
+        </div>
+        <div class="day-theme">古蜀文明 · 三星堆 🏛️</div>
+        <div class="attraction-tags">
+          <span class="tag">三星堆博物館</span>
+          <span class="tag">金沙遺址</span>
+        </div>
+        <div class="day-transport">🚌 高速巴士 &nbsp;🚕 計程車</div>
+      </div>
+      <div class="day-arrow" style="font-size:12px;color:#9CA3AF;">規劃中</div>
+    </div>
+
+    <!-- Day 5 -->
+    <div class="day-card" style="opacity:0.65; cursor:default;">
+      <div class="day-accent accent-d5">
+        <span class="day-num">5</span>
+        <span class="day-label">DAY</span>
+      </div>
+      <div class="day-body">
+        <div class="day-meta">
+          <span class="day-date">3月19日（週三）</span>
+        </div>
+        <div class="day-theme">美食購物 · 返程 🛍️</div>
+        <div class="attraction-tags">
+          <span class="tag">春熙路</span>
+          <span class="tag">IFS成都</span>
+          <span class="tag">機場</span>
+        </div>
+        <div class="day-transport">🚇 地鐵 &nbsp;✈️ 飛機</div>
+      </div>
+      <div class="day-arrow" style="font-size:12px;color:#9CA3AF;">規劃中</div>
+    </div>
+  </div>
+
+  <!-- ===== 高德地圖：全程景點總覽 ===== -->
+  <div class="section-header">
+    <div class="section-dot" style="background:var(--teal);"></div>
+    <h2>景點地圖總覽</h2>
+  </div>
+  <div class="map-section">
+    <div id="amap-overview"></div>
+  </div>
+
+  <!-- ===== 旅遊提示 ===== -->
+  <div class="section-header">
+    <div class="section-dot" style="background:#F87171;"></div>
+    <h2>旅遊小提示</h2>
+  </div>
+  <div class="tips-card">
+    <div class="tip-item">
+      <span class="tip-icon">💰</span>
+      <span class="tip-text">建議備帶少量現金，部分小吃攤與古街店家不接受刷卡。</span>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🌡️</span>
+      <span class="tip-text">成都春季早晚溫差大，建議採洋蔥式穿搭，早晚加件薄外套。</span>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">📱</span>
+      <span class="tip-text">下載支付寶或微信支付，絕大多數景點、餐廳、交通均使用 QR 碼付款。</span>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🐼</span>
+      <span class="tip-text">熊貓基地建議 08:00 開門即進場，下午熊貓午睡不活躍，效果大不同！</span>
+    </div>
+  </div>
+
+  <!-- 底部間距 -->
+  <div style="height:16px;"></div>
+
+  <!-- ===== 底部導覽列 ===== -->
+  <nav class="bottom-nav">
+    <a class="nav-item active" href="index.html">
+      <span class="nav-icon">🗺️</span>
+      <span class="nav-label">行程</span>
+    </a>
+    <a class="nav-item" href="#amap-overview">
+      <span class="nav-icon">📍</span>
+      <span class="nav-label">地圖</span>
+    </a>
+    <a class="nav-item" href="day1.html">
+      <span class="nav-icon">📅</span>
+      <span class="nav-label">景點</span>
+    </a>
+    <a class="nav-item" href="#">
+      <span class="nav-icon">🌤️</span>
+      <span class="nav-label">天氣</span>
+    </a>
+    <a class="nav-item" href="#">
+      <span class="nav-icon">⚙️</span>
+      <span class="nav-label">設定</span>
+    </a>
+  </nav>
+
+  <!-- ===== 高德地圖初始化腳本 ===== -->
+  <script>
+    /**
+     * 初始化總覽地圖
+     * 顯示行程所有景點的標記，不同天用不同顏色區分
+     */
+
+    // 各天景點資料（包含名稱、座標、顏色）
+    const allSpots = [
+      // Day 1 - 琥珀色
+      { day: 1, name: '天府廣場', lat: 30.6579, lng: 104.0655, color: '#F59E0B' },
+      { day: 1, name: '寬窄巷子', lat: 30.6726, lng: 104.0536, color: '#F59E0B' },
+      { day: 1, name: '青羊宮', lat: 30.6657, lng: 104.0417, color: '#F59E0B' },
+      { day: 1, name: '杜甫草堂', lat: 30.6655, lng: 104.0359, color: '#F59E0B' },
+      { day: 1, name: '錦里古街', lat: 30.6431, lng: 104.0476, color: '#F59E0B' },
+      { day: 1, name: '春熙路', lat: 30.6574, lng: 104.0810, color: '#F59E0B' },
+
+      // Day 2 - 翠綠色
+      { day: 2, name: '熊貓繁育基地', lat: 30.7322, lng: 104.1355, color: '#10B981' },
+      { day: 2, name: '武侯祠', lat: 30.6432, lng: 104.0474, color: '#10B981' },
+      { day: 2, name: '錦里古街', lat: 30.6431, lng: 104.0476, color: '#10B981' },
+
+      // Day 3 - 藍色
+      { day: 3, name: '樂山大佛', lat: 29.5450, lng: 103.7836, color: '#3B82F6' },
+      { day: 3, name: '峨眉山', lat: 29.5984, lng: 103.4847, color: '#3B82F6' },
+
+      // Day 4 - 紫色
+      { day: 4, name: '三星堆博物館', lat: 31.0084, lng: 104.3534, color: '#8B5CF6' },
+      { day: 4, name: '金沙遺址', lat: 30.6752, lng: 104.0109, color: '#8B5CF6' },
+
+      // Day 5 - 紅色
+      { day: 5, name: '春熙路', lat: 30.6574, lng: 104.0810, color: '#EF4444' },
+      { day: 5, name: 'IFS成都', lat: 30.6558, lng: 104.0793, color: '#EF4444' },
+    ];
+
+    // 等 AMap SDK 完全載入後才初始化
+    window.onload = function () {
+      try {
+        // 建立地圖，以成都市中心為初始中心點
+        var map = new AMap.Map('amap-overview', {
+          zoom: 11,                          // 縮放等級
+          center: [104.0665, 30.6572],       // 成都市中心經緯度
+          mapStyle: 'amap://styles/whitesmoke', // 淡雅地圖樣式
+          resizeEnable: true,
+        });
+
+        // 在地圖上加入所有景點標記
+        allSpots.forEach(function (spot) {
+          // 自訂圓形標記（以景點顏色區分不同天）
+          var marker = new AMap.CircleMarker({
+            center: new AMap.LngLat(spot.lng, spot.lat),
+            radius: 7,
+            strokeColor: '#fff',
+            strokeWeight: 2,
+            fillColor: spot.color,
+            fillOpacity: 0.95,
+            zIndex: 10,
+            cursor: 'pointer',
+          });
+          marker.setMap(map);
+
+          // 點擊景點顯示資訊彈窗
+          marker.on('click', function () {
+            var infoWindow = new AMap.InfoWindow({
+              content: `
+                <div style="padding:8px 12px;font-family:'Plus Jakarta Sans',sans-serif;">
+                  <div style="font-weight:700;font-size:14px;color:#1E3A5F;margin-bottom:2px;">
+                    ${spot.name}
+                  </div>
+                  <div style="font-size:12px;color:#6B7280;">Day ${spot.day}・第${spot.day}天行程</div>
+                </div>
+              `,
+              offset: new AMap.Pixel(0, -10),
+            });
+            infoWindow.open(map, marker.getCenter());
+          });
+        });
+
+        // 圖例（各天顏色說明）
+        var legend = document.createElement('div');
+        legend.style.cssText = 'position:absolute;bottom:10px;left:10px;background:rgba(255,255,255,0.92);border-radius:8px;padding:6px 10px;font-size:10px;font-family:sans-serif;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,0.15);';
+        legend.innerHTML = [
+          '<span style="color:#F59E0B;">● </span>Day1',
+          '<span style="color:#10B981;">● </span>Day2',
+          '<span style="color:#3B82F6;">● </span>Day3',
+          '<span style="color:#8B5CF6;">● </span>Day4',
+          '<span style="color:#EF4444;">● </span>Day5',
+        ].join('  ');
+        document.getElementById('amap-overview').appendChild(legend);
+
+      } catch (e) {
+        // 地圖載入失敗時顯示提示
+        document.getElementById('amap-overview').innerHTML =
+          '<div style="height:220px;display:flex;align-items:center;justify-content:center;background:#F3F4F6;border-radius:16px;color:#6B7280;font-size:14px;">地圖載入中...</div>';
+      }
+    };
+  </script>
+
+</body>
+
+</html>
