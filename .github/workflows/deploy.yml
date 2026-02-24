@@ -1,0 +1,35 @@
+# ============================================
+# 🚀 Cloudflare Pages 自動部署
+# ============================================
+# 當程式碼推送到 main 分支時，自動部署到 Cloudflare Pages。
+# 
+# ⚠️ 需要在 GitHub 設定 2 個 Secrets：
+#   1. CLOUDFLARE_ACCOUNT_ID  → 你的 Cloudflare 帳號 ID
+#   2. CLOUDFLARE_API_TOKEN   → Cloudflare API Token（需有 Pages 編輯權限）
+# ============================================
+
+name: 🚀 Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # 允許手動觸發部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to Cloudflare Pages
+    
+    steps:
+      # 第一步：拉取程式碼
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      # 第二步：部署到 Cloudflare Pages
+      - name: 🚀 Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # 部署整個專案目錄（靜態 HTML，不需要建置步驟）
+          command: pages deploy . --project-name=chengdu
