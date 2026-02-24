@@ -1,0 +1,21 @@
+{
+  "name": "成都深度旅遊 2026",
+  "short_name": "成都旅遊",
+  "description": "9天8夜成都、九寨溝、黃龍深度旅遊行程表",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1E3A8A",
+  "theme_color": "#3B82F6",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐼</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐼</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
