@@ -420,6 +420,156 @@
       background: linear-gradient(135deg, #ef4444, #dc2626);
     }
 
+    /* ===== 搶票日曆 ===== */
+    .booking-section {
+      padding: 0 16px;
+      margin-bottom: 24px;
+    }
+
+    .booking-notice {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 11px;
+      color: #1e3a8a;
+      line-height: 1.5;
+    }
+
+    .booking-notice strong {
+      color: #1d4ed8;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .booking-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .booking-timeline::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      bottom: 20px;
+      left: 36px;
+      width: 2px;
+      background: #e5e7eb;
+      z-index: 0;
+    }
+
+    .booking-item {
+      display: flex;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bk-date-box {
+      width: 74px;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border: 2px solid var(--teal);
+      border-radius: 10px;
+      padding: 8px 0;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      align-self: flex-start;
+      position: relative;
+    }
+
+    .bk-date-box::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 15px;
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+    }
+
+    .bk-date-box.bk-danger {
+      border-color: #ef4444;
+    }
+
+    .bk-date-box.bk-danger::after {
+      background: #ef4444;
+    }
+
+    .bk-month {
+      font-size: 10px;
+      color: var(--teal);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .bk-danger .bk-month {
+      color: #ef4444;
+    }
+
+    .bk-day {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .bk-content {
+      flex: 1;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid #f3f4f6;
+    }
+
+    .bk-content.bk-content-danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+    }
+
+    .bk-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bk-platform {
+      font-size: 11px;
+      font-weight: 600;
+      color: #059669;
+      background: #d1fae5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .bk-desc {
+      font-size: 11px;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+
+    .bk-danger-tag {
+      background: #ef4444;
+      color: #fff;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
     /* ===== 住宿總覽 ===== */
     .hotel-container {
       padding: 0 16px;
@@ -1981,6 +2131,114 @@
   </div>
 
   <!-- 移除原本的行內打包清單 -->
+
+  <!-- ===== 票務預約與搶票日曆 ===== -->
+  <div class="section-header">
+    <div class="section-dot" style="background: #ef4444"></div>
+    <h2>🎟️ 搶票日曆</h2>
+  </div>
+
+  <div class="booking-section">
+    <div class="booking-notice">
+      <strong>📝 搶票前置作業（出發前一個月務必完成）</strong>
+      • <b>實名認證：</b>下載「鐵路 12306」App 並完成台胞證認證；確認微信支付綁定好信用卡。<br>
+      • <b>預建聯絡人：</b>在所有微信小程序中提前註冊，將同行親友的「姓名、台胞證號、手機號」加入常用名單。一鍵帶入才能秒殺！
+    </div>
+
+    <div class="booking-timeline">
+      <!-- 5/04 高鐵去程 -->
+      <div class="booking-item">
+        <div class="bk-date-box">
+          <div class="bk-month">2026/05</div>
+          <div class="bk-day">04</div>
+        </div>
+        <div class="bk-content">
+          <div class="bk-title">🚄 搶 Day 3 去程高鐵</div>
+          <div class="bk-platform">12306 (提前 15 天)</div>
+          <div class="bk-desc">【成都東 ➔ 黃龍九寨】。放票時間通常為 08:30 或 09:00，建議提早幾天查詢確切放票時刻。</div>
+        </div>
+      </div>
+
+      <!-- 5/05 九寨 Day 1 -->
+      <div class="booking-item">
+        <div class="bk-date-box">
+          <div class="bk-month">2026/05</div>
+          <div class="bk-day">05</div>
+        </div>
+        <div class="bk-content">
+          <div class="bk-title">🏞️ 搶 Day 4 九寨溝門票</div>
+          <div class="bk-platform">阿壩旅遊網 (提前 14 天)</div>
+          <div class="bk-desc">購買九寨溝「第一天」全價票與觀光車票。</div>
+        </div>
+      </div>
+
+      <!-- 5/06 九寨 Day 2 -->
+      <div class="booking-item">
+        <div class="bk-date-box">
+          <div class="bk-month">2026/05</div>
+          <div class="bk-day">06</div>
+        </div>
+        <div class="bk-content">
+          <div class="bk-title">🏞️ 搶 Day 5 九寨溝門票</div>
+          <div class="bk-platform">阿壩旅遊網 (提前 14 天)</div>
+          <div class="bk-desc">購買九寨溝「第二天」門票（旺季無二次進溝優惠，需重新買票車）。</div>
+        </div>
+      </div>
+
+      <!-- 5/07 高鐵回程 -->
+      <div class="booking-item">
+        <div class="bk-date-box">
+          <div class="bk-month">2026/05</div>
+          <div class="bk-day">07</div>
+        </div>
+        <div class="bk-content">
+          <div class="bk-title">🚄 搶 Day 6 回程高鐵</div>
+          <div class="bk-platform">12306 (提前 15 天)</div>
+          <div class="bk-desc">【黃龍九寨 ➔ 成都東】。</div>
+        </div>
+      </div>
+
+      <!-- 5/08 都江堰 -->
+      <div class="booking-item">
+        <div class="bk-date-box">
+          <div class="bk-month">2026/05</div>
+          <div class="bk-day">08</div>
+        </div>
+        <div class="bk-content">
+          <div class="bk-title">🌊 搶 Day 7 都江堰門票</div>
+          <div class="bk-platform">青城山都江堰 (提前 14 天)</div>
+          <div class="bk-desc">通常提前 14 天開放預訂。</div>
+        </div>
+      </div>
+
+      <!-- 5/16 熊貓谷 -->
+      <div class="booking-item">
+        <div class="bk-date-box">
+          <div class="bk-month">2026/05</div>
+          <div class="bk-day">16</div>
+        </div>
+        <div class="bk-content">
+          <div class="bk-title">🐼 搶 Day 7 熊貓谷門票</div>
+          <div class="bk-platform">熊貓谷 (提前 7 天)</div>
+          <div class="bk-desc">熊貓怕熱，強烈建議搶早上的時段入園。</div>
+        </div>
+      </div>
+
+      <!-- 5/19 三星堆 (Boss!) -->
+      <div class="booking-item">
+        <div class="bk-date-box bk-danger">
+          <div class="bk-month">05/19 晚上</div>
+          <div class="bk-day">20:00</div>
+        </div>
+        <div class="bk-content bk-content-danger">
+          <div class="bk-title">🔱 搶 Day 8 三星堆門票 <span class="bk-danger-tag">極難</span></div>
+          <div class="bk-platform" style="background:#fecaca; color:#b91c1c;">三星堆博物館 (提前 5 天)</div>
+          <div class="bk-desc" style="color:#7f1d1d;"><strong>⚠️ 魔王級難度：</strong>整趟旅程最難搶的票！每天晚上 20:00 準時釋放 5 天後的票，幾分鐘內秒殺。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== 每日行程卡片（9天） ===== -->
   <div class="section-header">
