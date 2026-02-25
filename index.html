@@ -3357,8 +3357,9 @@
           }
         }
 
-        // 2. 呼叫 aviationstack API（免費方案僅支援 HTTP）
-        const url = `http://api.aviationstack.com/v1/flights?access_key=${AVIATIONSTACK_KEY}&flight_iata=${flightIata}`;
+        // 2. 呼叫 aviationstack API（免費方案僅支援 HTTP，使用 AllOrigins proxy 繞過 HTTPS 限制）
+        const targetUrl = `http://api.aviationstack.com/v1/flights?access_key=${AVIATIONSTACK_KEY}&flight_iata=${flightIata}`;
+        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
         const response = await fetch(url);
         const result = await response.json();
 
@@ -3390,7 +3391,7 @@
                 <div class="detail-label">⚠️ 查詢失敗</div>
                 <div class="detail-value" style="font-size:12px;color:#DC2626;">
                   無法取得航班資料，請稍後再試。<br>
-                  <span style="font-size:10px;color:#9CA3AF;">(免費方案僅支援 HTTP，若網站使用 HTTPS 可能被瀏覽器封鎖)</span>
+                  <span style="font-size:10px;color:#9CA3AF;">(如持續失敗，請確認航班代碼是否正確，或 API 呼叫次數是否達標)</span>
                 </div>
               </div>
             </div>`;
