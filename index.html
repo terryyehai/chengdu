@@ -61,11 +61,8 @@
       height: 60vw;
       max-height: 320px;
       min-height: 240px;
-      /* 暖色漸層背景，搭配熊貓插圖 */
-      background: linear-gradient(135deg,
-          #1e3a5f 0%,
-          #2d5a88 40%,
-          #f59e0b 100%);
+      /* 暖色漸層背景，搭配現代AI生成的熊貓與竹子圖片 */
+      background: url('images/panda_hero.png') center/cover no-repeat;
       overflow: hidden;
       border-radius: 0 0 32px 32px;
     }
@@ -568,6 +565,43 @@
       padding: 2px 6px;
       border-radius: 10px;
       font-weight: 700;
+    }
+
+    .booking-reminder-btn {
+      background: #eff6ff;
+      border: 1px solid #3b82f6;
+      color: #2563eb;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .booking-reminder-btn:hover {
+      background: #3b82f6;
+      color: #fff;
+    }
+
+    .booking-reminder-btn.active {
+      background: #10b981;
+      border-color: #059669;
+      color: #fff;
+    }
+
+    body.dark-mode .booking-reminder-btn {
+      background: #1e3a8a;
+      border-color: #3b82f6;
+      color: #bfdbfe;
+    }
+
+    body.dark-mode .booking-reminder-btn.active {
+      background: #059669;
+      border-color: #10b981;
+      color: #fff;
     }
 
     /* ===== 住宿總覽 ===== */
@@ -1982,82 +2016,6 @@
 <body>
   <!-- ===== 英雄橫幅（真實照片背景 + 文化插圖裝飾） ===== -->
   <div class="hero">
-    <!-- 精緻大熊貓吃竹子插圖 -->
-    <svg class="hero-bg-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-      <!-- 竹子背景 -->
-      <rect x="170" y="10" width="8" height="200" rx="4" fill="#34D399" opacity="0.6" />
-      <rect x="190" y="30" width="6" height="180" rx="3" fill="#6EE7B7" opacity="0.45" />
-      <rect x="155" y="50" width="5" height="160" rx="2.5" fill="#A7F3D0" opacity="0.35" />
-      <!-- 竹葉 -->
-      <ellipse cx="178" cy="40" rx="18" ry="5" transform="rotate(-30 178 40)" fill="#34D399" opacity="0.55" />
-      <ellipse cx="195" cy="65" rx="15" ry="4" transform="rotate(20 195 65)" fill="#6EE7B7" opacity="0.5" />
-      <ellipse cx="162" cy="85" rx="14" ry="4" transform="rotate(-20 162 85)" fill="#34D399" opacity="0.45" />
-      <ellipse cx="180" cy="100" rx="16" ry="4.5" transform="rotate(15 180 100)" fill="#A7F3D0" opacity="0.4" />
-      <!-- 飄落竹葉 -->
-      <ellipse cx="35" cy="30" rx="10" ry="3" transform="rotate(-45 35 30)" fill="#6EE7B7" opacity="0.3" />
-      <ellipse cx="60" cy="55" rx="8" ry="2.5" transform="rotate(30 60 55)" fill="#34D399" opacity="0.25" />
-      <!-- 中式祥雲 -->
-      <g opacity="0.2" fill="#FDE68A">
-        <circle cx="25" cy="60" r="6" />
-        <circle cx="33" cy="58" r="7" />
-        <circle cx="41" cy="60" r="6" />
-        <circle cx="140" cy="25" r="5" />
-        <circle cx="147" cy="23" r="6" />
-        <circle cx="154" cy="25" r="5" />
-      </g>
-      <!-- 熊貓身體（白色主體） -->
-      <ellipse cx="90" cy="145" rx="55" ry="58" fill="#FFFFFF" />
-      <!-- 左前臂 -->
-      <ellipse cx="52" cy="130" rx="18" ry="25" transform="rotate(15 52 130)" fill="#2D3748" />
-      <!-- 右前臂（抱竹子） -->
-      <ellipse cx="128" cy="125" rx="17" ry="24" transform="rotate(-15 128 125)" fill="#2D3748" />
-      <!-- 左後腿 -->
-      <ellipse cx="60" cy="180" rx="22" ry="16" transform="rotate(10 60 180)" fill="#2D3748" />
-      <!-- 右後腿 -->
-      <ellipse cx="118" cy="182" rx="22" ry="16" transform="rotate(-10 118 182)" fill="#2D3748" />
-      <!-- 肉球（腳掌） -->
-      <ellipse cx="55" cy="192" rx="10" ry="7" fill="#4A5568" />
-      <circle cx="50" cy="188" r="3" fill="#F9A8D4" opacity="0.7" />
-      <circle cx="60" cy="188" r="3" fill="#F9A8D4" opacity="0.7" />
-      <ellipse cx="125" cy="194" rx="10" ry="7" fill="#4A5568" />
-      <circle cx="120" cy="190" r="3" fill="#F9A8D4" opacity="0.7" />
-      <circle cx="130" cy="190" r="3" fill="#F9A8D4" opacity="0.7" />
-      <!-- 白色肚皮光澤 -->
-      <ellipse cx="88" cy="150" rx="32" ry="35" fill="#F7FAFC" opacity="0.5" />
-      <!-- 頭部 -->
-      <circle cx="90" cy="90" r="42" fill="#FFFFFF" />
-      <!-- 左耳 -->
-      <circle cx="58" cy="58" r="16" fill="#2D3748" />
-      <circle cx="58" cy="58" r="9" fill="#4A5568" />
-      <!-- 右耳 -->
-      <circle cx="122" cy="58" r="16" fill="#2D3748" />
-      <circle cx="122" cy="58" r="9" fill="#4A5568" />
-      <!-- 眼圈（黑色橢圓） -->
-      <ellipse cx="74" cy="85" rx="14" ry="13" fill="#2D3748" transform="rotate(-8 74 85)" />
-      <ellipse cx="106" cy="85" rx="14" ry="13" fill="#2D3748" transform="rotate(8 106 85)" />
-      <!-- 眼白 -->
-      <ellipse cx="76" cy="84" rx="7" ry="8" fill="#FFFFFF" />
-      <ellipse cx="104" cy="84" rx="7" ry="8" fill="#FFFFFF" />
-      <!-- 眼珠 -->
-      <circle cx="78" cy="84" r="4.5" fill="#1A202C" />
-      <circle cx="102" cy="84" r="4.5" fill="#1A202C" />
-      <!-- 眼睛高光 -->
-      <circle cx="80" cy="82" r="2" fill="#FFFFFF" />
-      <circle cx="104" cy="82" r="2" fill="#FFFFFF" />
-      <!-- 鼻子 -->
-      <ellipse cx="90" cy="97" rx="6" ry="4.5" fill="#2D3748" />
-      <ellipse cx="90" cy="96" rx="3" ry="1.5" fill="#4A5568" opacity="0.5" />
-      <!-- 嘴巴（微笑） -->
-      <path d="M83 101 Q90 108 97 101" fill="none" stroke="#2D3748" stroke-width="1.5" stroke-linecap="round" />
-      <!-- 腮紅 -->
-      <circle cx="66" cy="95" r="7" fill="#F9A8D4" opacity="0.35" />
-      <circle cx="114" cy="95" r="7" fill="#F9A8D4" opacity="0.35" />
-      <!-- 手中的竹竿 -->
-      <rect x="108" y="70" width="5" height="80" rx="2.5" fill="#059669" transform="rotate(12 110 110)" />
-      <!-- 竹竿上的小葉 -->
-      <ellipse cx="118" cy="78" rx="10" ry="3.5" transform="rotate(-25 118 78)" fill="#10B981" />
-      <ellipse cx="105" cy="95" rx="8" ry="3" transform="rotate(20 105 95)" fill="#34D399" />
-    </svg>
 
     <div class="hero-gradient"></div>
     <div class="hero-content">
@@ -2132,113 +2090,7 @@
 
   <!-- 移除原本的行內打包清單 -->
 
-  <!-- ===== 票務預約與搶票日曆 ===== -->
-  <div class="section-header">
-    <div class="section-dot" style="background: #ef4444"></div>
-    <h2>🎟️ 搶票日曆</h2>
-  </div>
-
-  <div class="booking-section">
-    <div class="booking-notice">
-      <strong>📝 搶票前置作業（出發前一個月務必完成）</strong>
-      • <b>實名認證：</b>下載「鐵路 12306」App 並完成台胞證認證；確認微信支付綁定好信用卡。<br>
-      • <b>預建聯絡人：</b>在所有微信小程序中提前註冊，將同行親友的「姓名、台胞證號、手機號」加入常用名單。一鍵帶入才能秒殺！
-    </div>
-
-    <div class="booking-timeline">
-      <!-- 5/04 高鐵去程 -->
-      <div class="booking-item">
-        <div class="bk-date-box">
-          <div class="bk-month">2026/05</div>
-          <div class="bk-day">04</div>
-        </div>
-        <div class="bk-content">
-          <div class="bk-title">🚄 搶 Day 3 去程高鐵</div>
-          <div class="bk-platform">12306 (提前 15 天)</div>
-          <div class="bk-desc">【成都東 ➔ 黃龍九寨】。放票時間通常為 08:30 或 09:00，建議提早幾天查詢確切放票時刻。</div>
-        </div>
-      </div>
-
-      <!-- 5/05 九寨 Day 1 -->
-      <div class="booking-item">
-        <div class="bk-date-box">
-          <div class="bk-month">2026/05</div>
-          <div class="bk-day">05</div>
-        </div>
-        <div class="bk-content">
-          <div class="bk-title">🏞️ 搶 Day 4 九寨溝門票</div>
-          <div class="bk-platform">阿壩旅遊網 (提前 14 天)</div>
-          <div class="bk-desc">購買九寨溝「第一天」全價票與觀光車票。</div>
-        </div>
-      </div>
-
-      <!-- 5/06 九寨 Day 2 -->
-      <div class="booking-item">
-        <div class="bk-date-box">
-          <div class="bk-month">2026/05</div>
-          <div class="bk-day">06</div>
-        </div>
-        <div class="bk-content">
-          <div class="bk-title">🏞️ 搶 Day 5 九寨溝門票</div>
-          <div class="bk-platform">阿壩旅遊網 (提前 14 天)</div>
-          <div class="bk-desc">購買九寨溝「第二天」門票（旺季無二次進溝優惠，需重新買票車）。</div>
-        </div>
-      </div>
-
-      <!-- 5/07 高鐵回程 -->
-      <div class="booking-item">
-        <div class="bk-date-box">
-          <div class="bk-month">2026/05</div>
-          <div class="bk-day">07</div>
-        </div>
-        <div class="bk-content">
-          <div class="bk-title">🚄 搶 Day 6 回程高鐵</div>
-          <div class="bk-platform">12306 (提前 15 天)</div>
-          <div class="bk-desc">【黃龍九寨 ➔ 成都東】。</div>
-        </div>
-      </div>
-
-      <!-- 5/08 都江堰 -->
-      <div class="booking-item">
-        <div class="bk-date-box">
-          <div class="bk-month">2026/05</div>
-          <div class="bk-day">08</div>
-        </div>
-        <div class="bk-content">
-          <div class="bk-title">🌊 搶 Day 7 都江堰門票</div>
-          <div class="bk-platform">青城山都江堰 (提前 14 天)</div>
-          <div class="bk-desc">通常提前 14 天開放預訂。</div>
-        </div>
-      </div>
-
-      <!-- 5/16 熊貓谷 -->
-      <div class="booking-item">
-        <div class="bk-date-box">
-          <div class="bk-month">2026/05</div>
-          <div class="bk-day">16</div>
-        </div>
-        <div class="bk-content">
-          <div class="bk-title">🐼 搶 Day 7 熊貓谷門票</div>
-          <div class="bk-platform">熊貓谷 (提前 7 天)</div>
-          <div class="bk-desc">熊貓怕熱，強烈建議搶早上的時段入園。</div>
-        </div>
-      </div>
-
-      <!-- 5/19 三星堆 (Boss!) -->
-      <div class="booking-item">
-        <div class="bk-date-box bk-danger">
-          <div class="bk-month">05/19 晚上</div>
-          <div class="bk-day">20:00</div>
-        </div>
-        <div class="bk-content bk-content-danger">
-          <div class="bk-title">🔱 搶 Day 8 三星堆門票 <span class="bk-danger-tag">極難</span></div>
-          <div class="bk-platform" style="background:#fecaca; color:#b91c1c;">三星堆博物館 (提前 5 天)</div>
-          <div class="bk-desc" style="color:#7f1d1d;"><strong>⚠️ 魔王級難度：</strong>整趟旅程最難搶的票！每天晚上 20:00 準時釋放 5 天後的票，幾分鐘內秒殺。
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- ===== 票務預約與搶票日曆移動至 modal ===== -->
 
   <!-- ===== 每日行程卡片（9天） ===== -->
   <div class="section-header">
@@ -2821,6 +2673,10 @@
       <span class="nav-icon">🎒</span>
       <span class="nav-label">打包</span>
     </a>
+    <a class="nav-item" href="javascript:void(0)" onclick="openBooking()">
+      <span class="nav-icon">🎟️</span>
+      <span class="nav-label">搶票</span>
+    </a>
     <a class="nav-item" href="javascript:void(0)" onclick="openExpense()">
       <span class="nav-icon">🧮</span>
       <span class="nav-label">記帳</span>
@@ -2830,6 +2686,155 @@
       <span class="nav-label">設定</span>
     </a>
   </nav>
+
+  <!-- ===== 搶票日曆 Modal ===== -->
+  <div class="settings-overlay" id="booking-overlay" onclick="if(event.target===this) closeBooking()">
+    <div class="expense-panel">
+      <div class="sp-header" style="margin-bottom:10px">
+        <div class="sp-title">🎟️ 搶票日曆</div>
+        <button class="sp-close" onclick="closeBooking()">✕</button>
+      </div>
+
+      <div class="booking-section"
+        style="padding:0; margin-bottom:0; max-height:60vh; overflow-y:auto; padding-right:4px;">
+        <div class="booking-notice">
+          <strong>📝 搶票前置作業（出發前一個月務必完成）</strong>
+          • <b>實名認證：</b>下載「鐵路 12306」App 並完成台胞證認證；確認微信支付綁定好信用卡。<br>
+          • <b>預建聯絡人：</b>在所有微信小程序中提前註冊，將同行親友的「姓名、台胞證號、手機號」加入常用名單。一鍵帶入才能秒殺！
+        </div>
+
+        <div class="booking-timeline">
+          <!-- 5/04 高鐵去程 -->
+          <div class="booking-item">
+            <div class="bk-date-box">
+              <div class="bk-month">2026/05</div>
+              <div class="bk-day">04</div>
+            </div>
+            <div class="bk-content">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🚄 搶 Day 3 去程高鐵</span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-train-go', '高鐵去程搶票', '2026-05-04T08:30:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform">12306 (提前 15 天)</div>
+              <div class="bk-desc">【成都東 ➔ 黃龍九寨】。放票時間通常為 08:30 或 09:00，建議提早幾天查詢確切放票時刻。</div>
+            </div>
+          </div>
+
+          <!-- 5/05 九寨 Day 1 -->
+          <div class="booking-item">
+            <div class="bk-date-box">
+              <div class="bk-month">2026/05</div>
+              <div class="bk-day">05</div>
+            </div>
+            <div class="bk-content">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🏞️ 搶 Day 4 九寨溝門票</span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-jiuzhai-d1', '九寨溝D1門票搶票', '2026-05-05T08:00:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform">阿壩旅遊網 (提前 14 天)</div>
+              <div class="bk-desc">購買九寨溝「第一天」全價票與觀光車票。</div>
+            </div>
+          </div>
+
+          <!-- 5/06 九寨 Day 2 -->
+          <div class="booking-item">
+            <div class="bk-date-box">
+              <div class="bk-month">2026/05</div>
+              <div class="bk-day">06</div>
+            </div>
+            <div class="bk-content">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🏞️ 搶 Day 5 九寨溝門票</span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-jiuzhai-d2', '九寨溝D2門票搶票', '2026-05-06T08:00:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform">阿壩旅遊網 (提前 14 天)</div>
+              <div class="bk-desc">購買九寨溝「第二天」門票（旺季無二次進溝優惠，需重新買票車）。</div>
+            </div>
+          </div>
+
+          <!-- 5/07 高鐵回程 -->
+          <div class="booking-item">
+            <div class="bk-date-box">
+              <div class="bk-month">2026/05</div>
+              <div class="bk-day">07</div>
+            </div>
+            <div class="bk-content">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🚄 搶 Day 6 回程高鐵</span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-train-back', '高鐵回程搶票', '2026-05-07T08:30:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform">12306 (提前 15 天)</div>
+              <div class="bk-desc">【黃龍九寨 ➔ 成都東】。</div>
+            </div>
+          </div>
+
+          <!-- 5/08 都江堰 -->
+          <div class="booking-item">
+            <div class="bk-date-box">
+              <div class="bk-month">2026/05</div>
+              <div class="bk-day">08</div>
+            </div>
+            <div class="bk-content">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🌊 搶 Day 7 都江堰門票</span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-dujiangyan', '都江堰門票搶票', '2026-05-08T08:00:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform">青城山都江堰 (提前 14 天)</div>
+              <div class="bk-desc">通常提前 14 天開放預訂。</div>
+            </div>
+          </div>
+
+          <!-- 5/16 熊貓谷 -->
+          <div class="booking-item">
+            <div class="bk-date-box">
+              <div class="bk-month">2026/05</div>
+              <div class="bk-day">16</div>
+            </div>
+            <div class="bk-content">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🐼 搶 Day 7 熊貓谷門票</span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-panda', '熊貓谷門票搶票', '2026-05-16T08:00:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform">熊貓谷 (提前 7 天)</div>
+              <div class="bk-desc">熊貓怕熱，強烈建議搶早上的時段入園。</div>
+            </div>
+          </div>
+
+          <!-- 5/19 三星堆 (Boss!) -->
+          <div class="booking-item">
+            <div class="bk-date-box bk-danger">
+              <div class="bk-month">05/19 晚上</div>
+              <div class="bk-day">20:00</div>
+            </div>
+            <div class="bk-content bk-content-danger">
+              <div class="bk-title">
+                <span style="flex: 1; min-width: 0;">🔱 搶 Day 8 三星堆門票 <span class="bk-danger-tag">極難</span></span>
+                <button class="booking-reminder-btn"
+                  onclick="toggleBookingReminder('bk-sanxingdui', '三星堆門票搶票', '2026-05-19T20:00:00+08:00', this)">🔔
+                  提醒我</button>
+              </div>
+              <div class="bk-platform" style="background:#fecaca; color:#b91c1c;">三星堆博物館 (提前 5 天)</div>
+              <div class="bk-desc" style="color:#7f1d1d;"><strong>⚠️ 魔王級難度：</strong>整趟旅程最難搶的票！每天晚上 20:00 準時釋放 5
+                天後的票，幾分鐘內秒殺。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== 打包清單 Modal ===== -->
   <div class="settings-overlay" id="packing-overlay" onclick="if(event.target===this) closePacking()">
@@ -3465,6 +3470,95 @@
     // 當網頁載入時初始化
     window.addEventListener('DOMContentLoaded', initPackingProgress);
 
+    // ===== 搶票日曆邏輯 =====
+    function openBooking() {
+      document.getElementById('booking-overlay').classList.add('open');
+      renderBooking(); // refresh initial state if needed
+    }
+
+    function closeBooking() {
+      document.getElementById('booking-overlay').classList.remove('open');
+    }
+
+    let bookingReminders = JSON.parse(localStorage.getItem('booking_reminders') || '{}');
+
+    function renderBooking() {
+      // Loop over all buttons and update their UI
+      document.querySelectorAll('.booking-reminder-btn').forEach(btn => {
+        const onclickAttr = btn.getAttribute('onclick');
+        if (!onclickAttr) return;
+        const match = onclickAttr.match(/'([^']+)'/);
+        if (!match) return;
+
+        const id = match[1]; // Extract the ID
+        if (bookingReminders[id]) {
+          btn.classList.add('active');
+          btn.innerHTML = '✅ 已設提醒';
+        } else {
+          btn.classList.remove('active');
+          btn.innerHTML = '🔔 提醒我';
+        }
+      });
+    }
+
+    function toggleBookingReminder(id, title, dateTime, btnElement) {
+      if (bookingReminders[id]) {
+        if (confirm("要取消此提醒紀錄嗎？")) {
+          bookingReminders[id] = false;
+          localStorage.setItem('booking_reminders', JSON.stringify(bookingReminders));
+          btnElement.classList.remove('active');
+          btnElement.innerHTML = '🔔 提醒我';
+        }
+      } else {
+        if (confirm("是否下載日曆檔案 (.ics) 加入手機行事曆中？\\n加入後不怕忘記搶票！")) {
+          downloadICS(id, title, dateTime);
+        }
+        bookingReminders[id] = true;
+        localStorage.setItem('booking_reminders', JSON.stringify(bookingReminders));
+        btnElement.classList.add('active');
+        btnElement.innerHTML = '✅ 已設提醒';
+      }
+    }
+
+    function downloadICS(id, title, dateTime) {
+      const dt = new Date(dateTime);
+      const startStr = dt.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+      const dtEnd = new Date(dt.getTime() + 60 * 60 * 1000); // 1hr duration
+      const endStr = dtEnd.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+      const icsData = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Chengdu Trip 2026//Booking Reminder//TW",
+        "CALSCALE:GREGORIAN",
+        "BEGIN:VEVENT",
+        "SUMMARY:" + title,
+        "DTSTART:" + startStr,
+        "DTEND:" + endStr,
+        "DESCRIPTION:請準備好台胞證、12306 或微信小程序開始搶票！",
+        "BEGIN:VALARM",
+        "TRIGGER:-PT10M",
+        "DESCRIPTION:Reminder",
+        "ACTION:DISPLAY",
+        "END:VALARM",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join('\\r\\n');
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = id + ".ics";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+
+    // 當網頁載入時初始化 booking
+    window.addEventListener('DOMContentLoaded', renderBooking);
+
     // ===== 記帳與匯率面板邏輯 =====
     let currentRate = 4.45; // 預設匯率 (1 RMB = 4.45 TWD)
     let expenses = JSON.parse(localStorage.getItem('expense_records') || '[]');
@@ -4062,3 +4156,4 @@
 </body>
 
 </html>
+
