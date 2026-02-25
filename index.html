@@ -421,11 +421,15 @@
     }
 
     /* ===== 住宿總覽 ===== */
-    .hotel-cards {
+    .hotel-container {
       padding: 0 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+    }
+
+    .hotel-wrapper {
+      position: relative;
     }
 
     .hotel-card {
@@ -437,6 +441,14 @@
       align-items: center;
       gap: 12px;
       border-left: 4px solid var(--teal);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      z-index: 2;
+    }
+
+    .hotel-card:active {
+      transform: scale(0.98);
     }
 
     .hotel-icon {
@@ -466,6 +478,83 @@
       font-size: 11px;
       color: var(--text-sub);
       line-height: 1.4;
+    }
+
+    .hotel-arrow {
+      font-size: 14px;
+      color: var(--text-sub);
+      transition: transform 0.3s ease;
+      padding-left: 8px;
+    }
+
+    /* 住宿展開面板 */
+    .hotel-detail-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease, margin 0.3s ease;
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+      border-radius: 0 0 12px 12px;
+      margin-top: -10px;
+      /* 拉近與卡片的距離 */
+      z-index: 1;
+    }
+
+    .hotel-detail-panel.open {
+      max-height: 350px;
+      padding: 22px 14px 14px;
+      /* 上留白給上面卡片蓋過的陰影 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) inset;
+    }
+
+    .hotel-detail-panel .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .hotel-detail-panel .detail-item {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 8px;
+      padding: 8px 10px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hotel-detail-panel .detail-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .hotel-detail-panel .detail-text {
+      font-size: 12px;
+      color: var(--navy);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .hotel-map-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+      width: 100%;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .hotel-map-btn:hover {
+      background: #0f766e;
     }
 
     /* ===== 航班資訊 ===== */
@@ -2141,49 +2230,165 @@
     <h2>🏨 住宿總覽</h2>
   </div>
 
-  <div class="hotel-cards">
-    <div class="hotel-card">
-      <div class="hotel-icon">🌆</div>
-      <div class="hotel-info">
-        <div class="hotel-name">春熙路國際金融中心亞朵酒店</div>
-        <div class="hotel-nights">📅 Day 1–2（5/16-17，2晚）</div>
-        <div class="hotel-desc">位於春熙路/太古里商圈，逛街吃火鍋超方便</div>
+  <div class="hotel-container">
+    <!-- Hotel 1 -->
+    <div class="hotel-wrapper">
+      <div class="hotel-card" onclick="toggleHotelDetail(this)">
+        <div class="hotel-icon">🌆</div>
+        <div class="hotel-info">
+          <div class="hotel-name">春熙路國際金融中心亞朵酒店</div>
+          <div class="hotel-nights">📅 Day 1–2（5/16-17，2晚）</div>
+          <div class="hotel-desc">位於春熙路/太古里商圈，逛街吃火鍋超方便</div>
+        </div>
+        <div class="hotel-arrow">▼</div>
+      </div>
+      <div class="hotel-detail-panel">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-icon">📍</div>
+            <div class="detail-text">地址：成都市錦江區紅星路三段1號 (近IFS/春熙路地鐵)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">📞</div>
+            <div class="detail-text">電話：待確認</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">⏰</div>
+            <div class="detail-text">入住時間：14:00 後<br>退房時間：12:00 前</div>
+          </div>
+        </div>
+        <a href="https://uri.amap.com/search?keyword=亞朵酒店(成都春熙路國際金融中心店)&center=104.08,30.65" target="_blank"
+          class="hotel-map-btn">
+          🗺️ 開啟高德地圖
+        </a>
       </div>
     </div>
 
-    <div class="hotel-card">
-      <div class="hotel-icon">🏔️</div>
-      <div class="hotel-info">
-        <div class="hotel-name">四季雲隱·五恆全氧民宿</div>
-        <div class="hotel-nights">📅 Day 3–4（5/18-19，2晚）</div>
-        <div class="hotel-desc">位於九寨溝彭豐村，近景區入口，高原氧吧</div>
+    <!-- Hotel 2 -->
+    <div class="hotel-wrapper">
+      <div class="hotel-card" onclick="toggleHotelDetail(this)">
+        <div class="hotel-icon">🏔️</div>
+        <div class="hotel-info">
+          <div class="hotel-name">四季雲隱·五恆全氧民宿</div>
+          <div class="hotel-nights">📅 Day 3–4（5/18-19，2晚）</div>
+          <div class="hotel-desc">位於九寨溝彭豐村，近景區入口，高原氧吧</div>
+        </div>
+        <div class="hotel-arrow">▼</div>
+      </div>
+      <div class="hotel-detail-panel">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-icon">📍</div>
+            <div class="detail-text">地址：阿壩藏族羌族自治州九寨溝縣彭豐村</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">📞</div>
+            <div class="detail-text">電話：待確認</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">⏰</div>
+            <div class="detail-text">入住時間：14:00 後<br>退房時間：12:00 前</div>
+          </div>
+        </div>
+        <a href="https://uri.amap.com/search?keyword=四季云隐五恒全氧民宿" target="_blank" class="hotel-map-btn">
+          🗺️ 開啟高德地圖
+        </a>
       </div>
     </div>
 
-    <div class="hotel-card">
-      <div class="hotel-icon">🏕️</div>
-      <div class="hotel-info">
-        <div class="hotel-name">雲起·迦境 藏式奢享民宿</div>
-        <div class="hotel-nights">📅 Day 5（5/20，1晚）</div>
-        <div class="hotel-desc">位於川主寺，方便隔天前往黃龍景區</div>
+    <!-- Hotel 3 -->
+    <div class="hotel-wrapper">
+      <div class="hotel-card" onclick="toggleHotelDetail(this)">
+        <div class="hotel-icon">🏕️</div>
+        <div class="hotel-info">
+          <div class="hotel-name">雲起·迦境 藏式奢享民宿</div>
+          <div class="hotel-nights">📅 Day 5（5/20，1晚）</div>
+          <div class="hotel-desc">位於川主寺，方便隔天前往黃龍景區</div>
+        </div>
+        <div class="hotel-arrow">▼</div>
+      </div>
+      <div class="hotel-detail-panel">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-icon">📍</div>
+            <div class="detail-text">地址：阿壩藏族羌族自治州松潘縣川主寺鎮</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">📞</div>
+            <div class="detail-text">電話：待確認</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">⏰</div>
+            <div class="detail-text">入住時間：14:00 後<br>退房時間：12:00 前</div>
+          </div>
+        </div>
+        <a href="https://uri.amap.com/search?keyword=云起迦境" target="_blank" class="hotel-map-btn">
+          🗺️ 開啟高德地圖
+        </a>
       </div>
     </div>
 
-    <div class="hotel-card">
-      <div class="hotel-icon">🎨</div>
-      <div class="hotel-info">
-        <div class="hotel-name">凱特麗亞創意主題飯店公寓</div>
-        <div class="hotel-nights">📅 Day 6–7（5/21-22，2晚）</div>
-        <div class="hotel-desc">回到春熙太古里商圈，機能便利</div>
+    <!-- Hotel 4 -->
+    <div class="hotel-wrapper">
+      <div class="hotel-card" onclick="toggleHotelDetail(this)">
+        <div class="hotel-icon">🎨</div>
+        <div class="hotel-info">
+          <div class="hotel-name">凱特麗亞創意主題飯店公寓</div>
+          <div class="hotel-nights">📅 Day 6–7（5/21-22，2晚）</div>
+          <div class="hotel-desc">回到春熙太古里商圈，機能便利</div>
+        </div>
+        <div class="hotel-arrow">▼</div>
+      </div>
+      <div class="hotel-detail-panel">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-icon">📍</div>
+            <div class="detail-text">地址：成都市錦江區 (近春熙路/太古里商圈)</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">📞</div>
+            <div class="detail-text">電話：待確認</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">⏰</div>
+            <div class="detail-text">入住時間：14:00 後<br>退房時間：12:00 前</div>
+          </div>
+        </div>
+        <a href="https://uri.amap.com/search?keyword=凯特丽亚创意主题酒店公寓(春熙路太古里店)" target="_blank" class="hotel-map-btn">
+          🗺️ 開啟高德地圖
+        </a>
       </div>
     </div>
 
-    <div class="hotel-card">
-      <div class="hotel-icon">✈️</div>
-      <div class="hotel-info">
-        <div class="hotel-name">天府空港悅享飯店</div>
-        <div class="hotel-nights">📅 Day 8（5/23，1晚）</div>
-        <div class="hotel-desc">天府機場旁，為隔天 08:10 早班機做準備</div>
+    <!-- Hotel 5 -->
+    <div class="hotel-wrapper">
+      <div class="hotel-card" onclick="toggleHotelDetail(this)">
+        <div class="hotel-icon">✈️</div>
+        <div class="hotel-info">
+          <div class="hotel-name">天府空港悅享飯店</div>
+          <div class="hotel-nights">📅 Day 8（5/23，1晚）</div>
+          <div class="hotel-desc">天府機場旁，為隔天 08:10 早班機做準備</div>
+        </div>
+        <div class="hotel-arrow">▼</div>
+      </div>
+      <div class="hotel-detail-panel">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <div class="detail-icon">📍</div>
+            <div class="detail-text">地址：成都市簡陽市天府國際機場內</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">📞</div>
+            <div class="detail-text">電話：待確認</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-icon">⏰</div>
+            <div class="detail-text">入住時間：14:00 後<br>退房時間：12:00 前</div>
+          </div>
+        </div>
+        <a href="https://uri.amap.com/search?keyword=天府空港悦享酒店" target="_blank" class="hotel-map-btn">
+          🗺️ 開啟高德地圖
+        </a>
       </div>
     </div>
   </div>
@@ -3560,6 +3765,30 @@
     // 初始化倒數計時並每秒更新
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+    // ===== 住宿折疊面板邏輯 =====
+    function toggleHotelDetail(headerEl) {
+      const panelEl = headerEl.nextElementSibling;
+      const isOpen = panelEl.classList.contains('open');
+
+      // 關閉所有的面板
+      document.querySelectorAll('.hotel-detail-panel').forEach(el => {
+        el.classList.remove('open');
+      });
+      document.querySelectorAll('.hotel-card').forEach(el => {
+        el.classList.remove('active');
+        const arrow = el.querySelector('.hotel-arrow');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+      });
+
+      // 如果原本不是開的，則打開並旋轉箭頭
+      if (!isOpen) {
+        panelEl.classList.add('open');
+        headerEl.classList.add('active');
+        const arrow = headerEl.querySelector('.hotel-arrow');
+        if (arrow) arrow.style.transform = 'rotate(180deg)';
+      }
+    }
 
     // ===== PWA Service Worker 註冊 =====
     if ('serviceWorker' in navigator) {
