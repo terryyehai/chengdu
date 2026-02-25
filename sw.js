@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chengdu-travel-v1';
+const CACHE_NAME = 'chengdu-travel-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -40,7 +40,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   // 特殊處理第三方 API (如天氣、航班資訊) - Network First, fallback to cache
-  if (event.request.url.includes('api.open-meteo.com') || event.request.url.includes('aviationstack.com') || event.request.url.includes('opensky-network.org')) {
+  if (event.request.url.includes('api.open-meteo.com') || event.request.url.includes('aviationstack.com') || event.request.url.includes('opensky-network.org') || event.request.url.includes('allorigins.win')) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
