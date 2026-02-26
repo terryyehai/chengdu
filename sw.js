@@ -1,8 +1,10 @@
-const CACHE_NAME = 'chengdu-travel-v4';
+const CACHE_NAME = 'chengdu-travel-v5';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './manifest.json',
+  './panda-icon-192.png',
+  './panda-icon-512.png',
   'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap',
   // 高德地圖 API 核心檔案 (盡可能快取，但動態圖磚可能無法全部離線)
   'https://webapi.amap.com/maps?v=2.0&key=b53b95a8647efb6d1b77cecbdb7419aa'
