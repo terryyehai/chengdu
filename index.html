@@ -3858,17 +3858,37 @@
       alert("天氣資料已重新載入！");
     }
 
-    /** 清除所有快取 */
+    /** 強制清除所有快取與重新更新 Service Worker */
     function clearAllCache() {
-      const keys = Object.keys(localStorage);
-      let count = 0;
-      keys.forEach((key) => {
-        if (key.startsWith("flight_")) {
+      if (!confirm("確定要清除所有暫存資料並強制重新載入嗎？此操作可幫助您獲取最新網頁版本。")) return;
+
+      Object.keys(localStorage).forEach((key) => {
+        if (!key.startsWith("pref_")) {
+          // 我們可以保留暗黑模式偏好等，但為了確保最新版，還是清空除了偏好以外所有
           localStorage.removeItem(key);
-          count++;
         }
       });
-      alert(`已清除 ${count} 筆航班快取資料！`);
+      sessionStorage.clear();
+
+      if ('caches' in window) {
+        caches.keys().then((names) => {
+          names.forEach(name => {
+            caches.delete(name);
+          });
+        });
+      }
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+          for (let registration of registrations) {
+            registration.unregister();
+          }
+          // 強制從網路重載
+          window.location.reload(true);
+        });
+      } else {
+        window.location.reload(true);
+      }
     }
 
     /** 同步設定面板的 UI 狀態（例如開關、字型大小按鈕） */

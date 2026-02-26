@@ -1,4 +1,4 @@
-const CACHE_NAME = 'chengdu-travel-v3';
+const CACHE_NAME = 'chengdu-travel-v4';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
