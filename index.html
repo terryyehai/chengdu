@@ -2010,39 +2010,7 @@
       color: var(--text-sub);
       margin-top: 10px;
     }
-  
-    /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* 懸停與點擊反饋優化 */
-    .day-card, .tl-card, .hotel-card, .tips-card, .weather-card {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-    .day-card:hover, .tl-card:hover, .hotel-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.12) !important;
-    }
-    body.dark-mode .day-card:hover, body.dark-mode .tl-card:hover, body.dark-mode .hotel-card:hover {
-      box-shadow: 0 16px 32px rgba(0,0,0,0.5) !important;
-    }
-\n</style>
 
-    <style>
-      .lucide { width: 1em; height: 1em; vertical-align: middle; }
-      .nav-icon .lucide { width: 24px; height: 24px; }
-      .stat-icon .lucide { width: 20px; height: 20px; margin-bottom: 4px; color: var(--teal, #0D9488); }
-      .sp-title .lucide { width: 20px; height: 20px; margin-right: 6px; }
-      h2 .lucide { width: 24px; height: 24px; margin-right: 8px; }
-      .tip-icon .lucide, .tip-ic .lucide { width: 18px; height: 18px; margin-top: 2px; }
-    
     /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
     .fade-up {
       opacity: 0;
@@ -2050,23 +2018,110 @@
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
+
     .fade-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
     /* 懸停與點擊反饋優化 */
-    .day-card, .tl-card, .hotel-card, .tips-card, .weather-card {
+    .day-card,
+    .tl-card,
+    .hotel-card,
+    .tips-card,
+    .weather-card {
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
-    .day-card:hover, .tl-card:hover, .hotel-card:hover {
+
+    .day-card:hover,
+    .tl-card:hover,
+    .hotel-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 32px rgba(0,0,0,0.12) !important;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12) !important;
     }
-    body.dark-mode .day-card:hover, body.dark-mode .tl-card:hover, body.dark-mode .hotel-card:hover {
-      box-shadow: 0 16px 32px rgba(0,0,0,0.5) !important;
+
+    body.dark-mode .day-card:hover,
+    body.dark-mode .tl-card:hover,
+    body.dark-mode .hotel-card:hover {
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5) !important;
     }
-\n</style>
-\n<script src="https://unpkg.com/lucide@latest"></script>\n</head>
+  </style>
+
+  <style>
+    .lucide {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
+    }
+
+    .nav-icon .lucide {
+      width: 24px;
+      height: 24px;
+    }
+
+    .stat-icon .lucide {
+      width: 20px;
+      height: 20px;
+      margin-bottom: 4px;
+      color: var(--teal, #0D9488);
+    }
+
+    .sp-title .lucide {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+    }
+
+    h2 .lucide {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .tip-icon .lucide,
+    .tip-ic .lucide {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+    }
+
+    /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 懸停與點擊反饋優化 */
+    .day-card,
+    .tl-card,
+    .hotel-card,
+    .tips-card,
+    .weather-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .day-card:hover,
+    .tl-card:hover,
+    .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    body.dark-mode .day-card:hover,
+    body.dark-mode .tl-card:hover,
+    body.dark-mode .hotel-card:hover {
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5) !important;
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
 
 <body>
   <!-- ===== 英雄橫幅（真實照片背景 + 文化插圖裝飾） ===== -->
@@ -2767,7 +2822,7 @@
             </div>
             <div class="bk-content">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🚄 搶 Day 3 去程高鐵</span>
+                <span style="flex: 1; min-width: 0;">🚄 搶去程高鐵</span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-train-go', '高鐵去程搶票', '2026-05-04T08:30:00+08:00', this)">🔔
                   提醒我</button>
@@ -2785,7 +2840,7 @@
             </div>
             <div class="bk-content">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🏞️ 搶 Day 4 九寨溝門票</span>
+                <span style="flex: 1; min-width: 0;">🏞️ 搶九寨溝門票</span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-jiuzhai-d1', '九寨溝D1門票搶票', '2026-05-05T08:00:00+08:00', this)">🔔
                   提醒我</button>
@@ -2803,7 +2858,7 @@
             </div>
             <div class="bk-content">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🏞️ 搶 Day 5 九寨溝門票</span>
+                <span style="flex: 1; min-width: 0;">🏞️ 搶九寨溝門票</span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-jiuzhai-d2', '九寨溝D2門票搶票', '2026-05-06T08:00:00+08:00', this)">🔔
                   提醒我</button>
@@ -2821,7 +2876,7 @@
             </div>
             <div class="bk-content">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🚄 搶 Day 6 回程高鐵</span>
+                <span style="flex: 1; min-width: 0;">🚄 搶回程高鐵</span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-train-back', '高鐵回程搶票', '2026-05-07T08:30:00+08:00', this)">🔔
                   提醒我</button>
@@ -2839,7 +2894,7 @@
             </div>
             <div class="bk-content">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🌊 搶 Day 7 都江堰門票</span>
+                <span style="flex: 1; min-width: 0;">🌊 搶都江堰門票</span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-dujiangyan', '都江堰門票搶票', '2026-05-08T08:00:00+08:00', this)">🔔
                   提醒我</button>
@@ -2857,7 +2912,7 @@
             </div>
             <div class="bk-content">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🐼 搶 Day 7 熊貓谷門票</span>
+                <span style="flex: 1; min-width: 0;">🐼 搶熊貓谷門票</span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-panda', '熊貓谷門票搶票', '2026-05-16T08:00:00+08:00', this)">🔔
                   提醒我</button>
@@ -2875,7 +2930,7 @@
             </div>
             <div class="bk-content bk-content-danger">
               <div class="bk-title">
-                <span style="flex: 1; min-width: 0;">🔱 搶 Day 8 三星堆門票 <span class="bk-danger-tag">極難</span></span>
+                <span style="flex: 1; min-width: 0;">🔱 搶三星堆門票 <span class="bk-danger-tag">極難</span></span>
                 <button class="booking-reminder-btn"
                   onclick="toggleBookingReminder('bk-sanxingdui', '三星堆門票搶票', '2026-05-19T20:00:00+08:00', this)">🔔
                   提醒我</button>
@@ -4208,7 +4263,7 @@
       });
     }
   </script>
-<script>lucide.createIcons();</script>\n
+  <script>lucide.createIcons();</script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 滾動淡入動畫
@@ -4220,7 +4275,7 @@
           }
         });
       }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
-      
+
       document.querySelectorAll('.day-card, .tl-item, .hotel-card, .tips-card, .weather-card, .stats-bar, .map-section, .booking-item').forEach(el => {
         el.classList.add('fade-up');
         observer.observe(el);
@@ -4231,12 +4286,11 @@
       window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
         heroBanners.forEach(banner => {
-          banner.style.backgroundPositionY = calc(50% + px);
+          banner.style.backgroundPositionY = calc(50 % + px);
         });
       });
     });
   </script>
-\n</body>
+</body>
 
 </html>
-
