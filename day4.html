@@ -341,8 +341,81 @@
             color: #fff;
             box-shadow: 0 4px 12px rgba(6, 182, 212, .3)
         }
-    </style>
-</head>
+    
+        /* ===== 深色模式 ===== */
+        body.dark-mode {
+            --cream: #1a1a2e;
+            --card: #16213e;
+            --navy: #e0e0e0;
+            --sub: #9ca3af;
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        body.dark-mode .top { background: rgba(22, 33, 62, .95); border-bottom-color: rgba(255, 255, 255, .06); }
+        body.dark-mode .back { background: #1e2d4a; color: #fff; }
+        body.dark-mode .tl-dot { background: var(--card); }
+        body.dark-mode .tl-bar { background: #2d3a52; }
+        body.dark-mode .tl-tag { background: #2d3a52; color: #a78bfa; }
+        body.dark-mode .tips { background: #1e2d4a; border-color: #2d3a52; }
+        body.dark-mode .tip { color: #d4a05a; }
+        body.dark-mode .btn-prev { background: #1e2d4a; color: #e0e0e0; }
+        body.dark-mode .nav-btns { background: transparent; }
+\n    
+    /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* 懸停與點擊反饋優化 */
+    .day-card, .tl-card, .hotel-card, .tips-card, .weather-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .day-card:hover, .tl-card:hover, .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.12) !important;
+    }
+    body.dark-mode .day-card:hover, body.dark-mode .tl-card:hover, body.dark-mode .hotel-card:hover {
+      box-shadow: 0 16px 32px rgba(0,0,0,0.5) !important;
+    }
+\n</style>
+
+    <style>
+      .lucide { width: 1em; height: 1em; vertical-align: middle; }
+      .nav-icon .lucide { width: 24px; height: 24px; }
+      .stat-icon .lucide { width: 20px; height: 20px; margin-bottom: 4px; color: var(--teal, #0D9488); }
+      .sp-title .lucide { width: 20px; height: 20px; margin-right: 6px; }
+      h2 .lucide { width: 24px; height: 24px; margin-right: 8px; }
+      .tip-icon .lucide, .tip-ic .lucide { width: 18px; height: 18px; margin-top: 2px; }
+    
+    /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* 懸停與點擊反饋優化 */
+    .day-card, .tl-card, .hotel-card, .tips-card, .weather-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .day-card:hover, .tl-card:hover, .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.12) !important;
+    }
+    body.dark-mode .day-card:hover, body.dark-mode .tl-card:hover, body.dark-mode .hotel-card:hover {
+      box-shadow: 0 16px 32px rgba(0,0,0,0.5) !important;
+    }
+\n</style>
+\n<script src="https://unpkg.com/lucide@latest"></script>\n</head>
 
 <body>
     <div class="top"><a class="back" href="index.html">←</a>
@@ -372,7 +445,7 @@
 
     <div class="sec-head">
         <div class="dot" style="background:var(--c)"></div>
-        <h2>📍 今日行程</h2>
+        <h2><i data-lucide="map-pin"></i> 今日行程</h2>
     </div>
     <div class="timeline">
         <div class="tl-item">
@@ -451,7 +524,7 @@
 
     <div class="sec-head">
         <div class="dot" style="background:#0D9488"></div>
-        <h2>🏨 今晚住宿</h2>
+        <h2><i data-lucide="hotel"></i> 今晚住宿</h2>
     </div>
     <div class="hotel-card">
         <div class="icon">🏔️</div>
@@ -471,10 +544,10 @@
 
     <div class="sec-head">
         <div class="dot" style="background:#F87171"></div>
-        <h2>💡 今日提醒</h2>
+        <h2><i data-lucide="lightbulb"></i> 今日提醒</h2>
     </div>
     <div class="tips">
-        <div class="tip"><span class="tip-ic">🧥</span><span>洋蔥式穿衣：5月早晚約9°C，中午可達25°C。建議內層長袖、中層背心、外層防水防風外套。</span></div>
+        <div class="tip"><span class="tip-ic"><i data-lucide="shirt"></i></span><span>洋蔥式穿衣：5月早晚約9°C，中午可達25°C。建議內層長袖、中層背心、外層防水防風外套。</span></div>
         <div class="tip"><span class="tip-ic">☀️</span><span>紫外線監測：高原地區紫外線極強，防曬乳、墨鏡、遮陽帽是標配。</span></div>
         <div class="tip"><span class="tip-ic">🫁</span><span>水分補給：園區最高海拔達3100米，多喝水、動作放慢能有效避免輕微高反。</span></div>
         <div class="tip"><span class="tip-ic">📸</span><span>拍照建議：上午10點前的「鏡海」無風倒影最完美；「五花海」湖底有焦木，陽光灑下時色彩最豔麗。</span></div>
@@ -494,6 +567,40 @@
             } catch (e) { document.getElementById('map').innerHTML = '<div style="height:200px;display:flex;align-items:center;justify-content:center;background:#F3F4F6;border-radius:16px;color:#6B7280;">地圖載入中...</div>' }
         };
     </script>
-</body>
+    <script>
+        // 讀取全域深色模式設定
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+<script>lucide.createIcons();</script>\n
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 滾動淡入動畫
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+      
+      document.querySelectorAll('.day-card, .tl-item, .hotel-card, .tips-card, .weather-card, .stats-bar, .map-section, .booking-item').forEach(el => {
+        el.classList.add('fade-up');
+        observer.observe(el);
+      });
+
+      // 視差滾動 (Parallax)
+      const heroBanners = document.querySelectorAll('.hero, .banner');
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        heroBanners.forEach(banner => {
+          banner.style.backgroundPositionY = calc(50% + px);
+        });
+      });
+    });
+  </script>
+\n</body>
 
 </html>

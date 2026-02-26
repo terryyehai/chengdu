@@ -2010,8 +2010,63 @@
       color: var(--text-sub);
       margin-top: 10px;
     }
-  </style>
-</head>
+  
+    /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* 懸停與點擊反饋優化 */
+    .day-card, .tl-card, .hotel-card, .tips-card, .weather-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .day-card:hover, .tl-card:hover, .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.12) !important;
+    }
+    body.dark-mode .day-card:hover, body.dark-mode .tl-card:hover, body.dark-mode .hotel-card:hover {
+      box-shadow: 0 16px 32px rgba(0,0,0,0.5) !important;
+    }
+\n</style>
+
+    <style>
+      .lucide { width: 1em; height: 1em; vertical-align: middle; }
+      .nav-icon .lucide { width: 24px; height: 24px; }
+      .stat-icon .lucide { width: 20px; height: 20px; margin-bottom: 4px; color: var(--teal, #0D9488); }
+      .sp-title .lucide { width: 20px; height: 20px; margin-right: 6px; }
+      h2 .lucide { width: 24px; height: 24px; margin-right: 8px; }
+      .tip-icon .lucide, .tip-ic .lucide { width: 18px; height: 18px; margin-top: 2px; }
+    
+    /* ===== 微動效與滾動動畫 (Motion & Microinteractions) ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* 懸停與點擊反饋優化 */
+    .day-card, .tl-card, .hotel-card, .tips-card, .weather-card {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .day-card:hover, .tl-card:hover, .hotel-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.12) !important;
+    }
+    body.dark-mode .day-card:hover, body.dark-mode .tl-card:hover, body.dark-mode .hotel-card:hover {
+      box-shadow: 0 16px 32px rgba(0,0,0,0.5) !important;
+    }
+\n</style>
+\n<script src="https://unpkg.com/lucide@latest"></script>\n</head>
 
 <body>
   <!-- ===== 英雄橫幅（真實照片背景 + 文化插圖裝飾） ===== -->
@@ -2038,27 +2093,27 @@
   <!-- ===== 旅程統計列 ===== -->
   <div class="stats-bar">
     <div class="stat-item">
-      <span class="stat-icon">📅</span>
+      <span class="stat-icon"><i data-lucide="calendar-days"></i></span>
       <span class="stat-value">9天</span>
       <span class="stat-label">行程天數</span>
     </div>
     <div class="stat-item">
-      <span class="stat-icon">🏨</span>
+      <span class="stat-icon"><i data-lucide="hotel"></i></span>
       <span class="stat-value">5家</span>
       <span class="stat-label">住宿</span>
     </div>
     <div class="stat-item">
-      <span class="stat-icon">📍</span>
+      <span class="stat-icon"><i data-lucide="map-pin"></i></span>
       <span class="stat-value">20+</span>
       <span class="stat-label">景點</span>
     </div>
     <div class="stat-item">
-      <span class="stat-icon">🚗</span>
+      <span class="stat-icon"><i data-lucide="car"></i></span>
       <span class="stat-value">~800km</span>
       <span class="stat-label">總里程</span>
     </div>
     <div class="stat-item">
-      <span class="stat-icon">✈️</span>
+      <span class="stat-icon"><i data-lucide="plane"></i></span>
       <span class="stat-value">高雄↔成都</span>
       <span class="stat-label">航班</span>
     </div>
@@ -2067,7 +2122,7 @@
   <!-- ===== 旅遊地點即時天氣 ===== -->
   <div class="section-header">
     <div class="section-dot" style="background: #3b82f6"></div>
-    <h2>🌤️ 即時天氣</h2>
+    <h2><i data-lucide="cloud-sun"></i> 即時天氣</h2>
   </div>
   <div class="weather-cards" id="weather-container">
     <div class="weather-card" id="weather-chengdu">
@@ -2506,7 +2561,7 @@
   <!-- ===== 航班資訊 ===== -->
   <div class="section-header">
     <div class="section-dot" style="background: #3b82f6"></div>
-    <h2>✈️ 航班資訊</h2>
+    <h2><i data-lucide="plane"></i> 航班資訊</h2>
   </div>
 
   <div class="flight-section">
@@ -2634,19 +2689,19 @@
   </div>
   <div class="tips-card">
     <div class="tip-item">
-      <span class="tip-icon">🏔️</span>
+      <span class="tip-icon"><i data-lucide="mountain"></i></span>
       <span class="tip-text">九寨溝/黃龍海拔 3000m+，建議提前服用紅景天預防高山症。</span>
     </div>
     <div class="tip-item">
-      <span class="tip-icon">💰</span>
+      <span class="tip-icon"><i data-lucide="coins"></i></span>
       <span class="tip-text">建議備帶少量現金，部分小吃攤與古街店家不接受刷卡。</span>
     </div>
     <div class="tip-item">
-      <span class="tip-icon">🌡️</span>
+      <span class="tip-icon"><i data-lucide="thermometer"></i></span>
       <span class="tip-text">5月成都市區 20-30°C，但九寨溝/黃龍僅 5-15°C，務必準備保暖外套。</span>
     </div>
     <div class="tip-item">
-      <span class="tip-icon">📱</span>
+      <span class="tip-icon"><i data-lucide="smartphone"></i></span>
       <span class="tip-text">下載支付寶或微信支付，絕大多數景點、餐廳、交通均使用 QR
         碼付款。</span>
     </div>
@@ -2662,27 +2717,27 @@
   <!-- ===== 底部導覽列 ===== -->
   <nav class="bottom-nav">
     <a class="nav-item active" href="index.html">
-      <span class="nav-icon">🗺️</span>
+      <span class="nav-icon"><i data-lucide="map"></i></span>
       <span class="nav-label">行程</span>
     </a>
     <a class="nav-item" href="#amap-overview">
-      <span class="nav-icon">📍</span>
+      <span class="nav-icon"><i data-lucide="map-pin"></i></span>
       <span class="nav-label">地圖</span>
     </a>
     <a class="nav-item" href="javascript:void(0)" onclick="openPacking()">
-      <span class="nav-icon">🎒</span>
+      <span class="nav-icon"><i data-lucide="backpack"></i></span>
       <span class="nav-label">打包</span>
     </a>
     <a class="nav-item" href="javascript:void(0)" onclick="openBooking()">
-      <span class="nav-icon">🎟️</span>
+      <span class="nav-icon"><i data-lucide="ticket"></i></span>
       <span class="nav-label">搶票</span>
     </a>
     <a class="nav-item" href="javascript:void(0)" onclick="openExpense()">
-      <span class="nav-icon">🧮</span>
+      <span class="nav-icon"><i data-lucide="calculator"></i></span>
       <span class="nav-label">記帳</span>
     </a>
     <a class="nav-item" href="javascript:void(0)" onclick="openSettings()">
-      <span class="nav-icon">⚙️</span>
+      <span class="nav-icon"><i data-lucide="settings"></i></span>
       <span class="nav-label">設定</span>
     </a>
   </nav>
@@ -2691,7 +2746,7 @@
   <div class="settings-overlay" id="booking-overlay" onclick="if(event.target===this) closeBooking()">
     <div class="expense-panel">
       <div class="sp-header" style="margin-bottom:10px">
-        <div class="sp-title">🎟️ 搶票日曆</div>
+        <div class="sp-title"><i data-lucide="ticket"></i> 搶票日曆</div>
         <button class="sp-close" onclick="closeBooking()">✕</button>
       </div>
 
@@ -2840,7 +2895,7 @@
   <div class="settings-overlay" id="packing-overlay" onclick="if(event.target===this) closePacking()">
     <div class="expense-panel">
       <div class="sp-header" style="margin-bottom:10px">
-        <div class="sp-title">🎒 必備打包清單</div>
+        <div class="sp-title"><i data-lucide="backpack"></i> 必備打包清單</div>
         <button class="sp-close" onclick="closePacking()">✕</button>
       </div>
 
@@ -2859,7 +2914,7 @@
   <div class="settings-overlay" id="expense-overlay" onclick="if(event.target===this) closeExpense()">
     <div class="expense-panel">
       <div class="sp-header" style="margin-bottom:0">
-        <div class="sp-title">🧮 匯率與記帳</div>
+        <div class="sp-title"><i data-lucide="calculator"></i> 匯率與記帳</div>
         <button class="sp-close" onclick="closeExpense()">✕</button>
       </div>
 
@@ -2914,7 +2969,7 @@
   <div class="settings-overlay" id="settings-overlay" onclick="if (event.target === this) closeSettings();">
     <div class="settings-panel">
       <div class="sp-header">
-        <div class="sp-title">⚙️ 設定</div>
+        <div class="sp-title"><i data-lucide="settings"></i> 設定</div>
         <button class="sp-close" onclick="closeSettings()">✕</button>
       </div>
 
@@ -2977,7 +3032,7 @@
   <div class="settings-overlay" id="expense-overlay" onclick="if(event.target===this)closeExpense()">
     <div class="expense-panel">
       <div class="sp-header" style="margin-bottom:0">
-        <div class="sp-title">🧮 匯率與記帳</div>
+        <div class="sp-title"><i data-lucide="calculator"></i> 匯率與記帳</div>
         <button class="sp-close" onclick="closeExpense()">✕</button>
       </div>
 
@@ -4153,7 +4208,35 @@
       });
     }
   </script>
-</body>
+<script>lucide.createIcons();</script>\n
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 滾動淡入動畫
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+      
+      document.querySelectorAll('.day-card, .tl-item, .hotel-card, .tips-card, .weather-card, .stats-bar, .map-section, .booking-item').forEach(el => {
+        el.classList.add('fade-up');
+        observer.observe(el);
+      });
+
+      // 視差滾動 (Parallax)
+      const heroBanners = document.querySelectorAll('.hero, .banner');
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        heroBanners.forEach(banner => {
+          banner.style.backgroundPositionY = calc(50% + px);
+        });
+      });
+    });
+  </script>
+\n</body>
 
 </html>
 
